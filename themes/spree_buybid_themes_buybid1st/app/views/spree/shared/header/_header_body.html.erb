@@ -1,0 +1,80 @@
+<div class="h-body">
+    <div class="container">
+        <div class="h-body-cont">
+            <div class="pull-left">
+                <div class="menu-button-area mobile">
+                    <%= link_to "/", id: "menu-button", class: "menu-button modal-button", "data-target": "menu-mobile" do %>
+                        <i class="fa fa-list-ul"></i>
+                    <% end %>
+                </div>
+                <%= link_to "/", class: "logo desktop" do %>
+                    <img src="<%= public_statics_assets_root %>/assets/images/logo-black.png" alt="">
+                <% end %>
+                <div class="h-slogan desktop">
+                    Mua và Đấu giá hàng Nhật
+                </div>
+                <div class="h-search">
+                    <form d="" class="h-search-input-group">
+                        <input type="text" title="Vui lòng nhập từ khóa để tìm kiếm"
+                            id="js-site-search-input"
+                            class="form-control js-site-search-input ui-autocomplete-input" name="text"
+                            value="" placeholder="Tìm sản phẩm, thương hiệu và danh mục" required=""
+                            autocomplete="off"
+                            oninvalid="this.setCustomValidity('Vui lòng nhập từ khóa để tìm kiếm!')">
+
+                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pull-right">
+                <!-- <div class="order-estimate">
+                    <a href="/support/estimate" class="h-link h-link-estimate">
+                        <div class="h-link-ico"><i class="fa fa-calculator"></i></div>
+                        <span>Dự toán</span>
+                    </a>
+                    <a href="http://service.buybid.jp/" class="h-link h-link-order">
+                        <div class="h-link-ico"><i class="fa fa-file-alt"></i></div>
+                        <span>Đặt hàng</span>
+                    </a>
+                </div> -->
+                <div class="h-account h-body-right-item desktop">
+                    <%= link_to "/", class: "h-body-link h-account-link" do %>
+                        <i class="icofont-user"></i>
+                        <div class="h-account-text">Tài khoản</div>
+                    <% end %>
+                    <div class="pop-hover-open h-account-sub">
+                        <div class="h-account-sub-item h-account-login">
+                            <div class="text-center">Đăng nhập Buybid.jp
+                            </div>
+                            <%= link_to "Đăng nhập", "#popup-login", id: "h-login-btn", class: "btn h-btn-primary" %>
+                            <div>
+                                Bạn chưa có tài khoản?
+                                <%= link_to "Đăng ký ngay", "#popup-register", class: "h-account-login-link text-uppercase" %>
+                            </div>
+                        </div>
+                        <div class="h-account-sub-item h-account-login-social">
+                            <div>Hoặc đăng nhập với
+                            </div>
+                            <%= link_to "/", class: "h-account-btn h-btn-primary facebook" do %>
+                                <i class="fab fa-facebook"></i>
+                                Facebook
+                            <% end %>
+                        </div>
+                        <div class="h-account-sub-item h-account-quote">
+                            <%= link_to "Gửi link báo giá", "#", class:"h-account-btn h-btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-cart h-body-right-item">
+                    <%= link_to "/", class:"h-body-link h-cart-link" do %>
+                        <i class="icofont-grocery"></i>
+                        <span class="h-cart-number">0</span>
+                    <% end %>
+                    <!-- <div class="pop-hover-open">
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

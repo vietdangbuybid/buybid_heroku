@@ -1,0 +1,402 @@
+<% @body_id = 'home-page' %>
+<main id="main-content">
+  <div class="container">
+      <section id="info">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="banner-slide">
+                      <div class="owl-carousel owl-theme banner-carousel">
+                          <div class="item">
+                              <a href="https://www.facebook.com/buybid.jp/photos/a.1784192615224888/2139815522995927/?type=3&amp;theater"
+                                  target="_blank">
+                                  <%= image_tag "#{public_statics_assets_root}/assets/images/banners/dang-web_20190301093958AM.jpg",
+                                      alt: "Thông Báo Thay Đổi Phí Dịch Vụ Mua Hàng "%>
+                              </a>
+                          </div>
+                          <div class="item">
+                              <a href="javascript:void(0)">
+                                  <%= image_tag "#{public_statics_assets_root}/assets/images/banners/Buybid_Banner_Dec_13.jpg",
+                                      alt: "Gioi thieu dich vu"%>
+                              </a>
+                          </div>
+                          <div class="item">
+                              <a href="https://buybid.jp/support/estimate" target="_blank">
+                                  <%= image_tag "#{public_statics_assets_root}/assets/images/banners/Buybid_banner 02.png",
+                                      alt: "Công cụ dự toán" %>
+                              </a>
+                          </div>
+                          <div class="item">
+                              <a href="https://buybid.jp/support/introduction" target="_blank">
+                                  <%= image_tag "#{public_statics_assets_root}/assets/images/banners/Buybid_banner 03.png",
+                                      alt: "Giới thiệu công ty"%>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section id="process">
+          <div class="row">
+              <div class="process-area">
+                  <div class="process-item col-xs-6 col-sm-3">
+                      <div class="process-box">
+                          <div class="process-item-ico">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/step-1.png" %>
+                          </div>
+                          <div class="process-item-text">
+                              <div class="title">Tìm kiếm sản phẩm</div>
+                          </div>
+                          <div class="process-item-cont">
+                              Tìm kiếm các website thương mại Nhật.<br>
+                              Tham khảo tại <a href="/order/sellers-list" target="_blank">đây</a>.
+                          </div>
+                          <div class="process-item-step">
+                              1
+                          </div>
+                      </div>
+                  </div>
+                  <div class="process-item col-xs-6 col-sm-3">
+                      <div class="process-box">
+                          <div class="process-item-ico">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/step-2.png" %>
+                          </div>
+                          <div class="process-item-text">
+                              <div class="title">Gửi link báo giá</div>
+                          </div>
+                          <div class="process-item-cont">
+                              Copy link sản phẩm và gửi cho Buybid thông qua trang <a
+                                  href="http://service.buybid.jp/" target="_blank">đặt hàng</a>.<br>Buybid sẽ
+                              báo giá và hướng dẫn bạn thanh toán.
+                          </div>
+                          <div class="process-item-step">
+                              2
+                          </div>
+                      </div>
+                  </div>
+                  <div class="process-item col-xs-6 col-sm-3">
+                      <div class="process-box">
+                          <div class="process-item-ico">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/step-3.png" %>
+                          </div>
+                          <div class="process-item-text">
+                              <div class="title">Mua hàng và Vận chuyển</div>
+                          </div>
+                          <div class="process-item-cont">
+                              Buybid tiến hành mua hàng và vận chuyển sản phẩm của bạn từ Nhật về Việt Nam.
+                          </div>
+                          <div class="process-item-step">
+                              3
+                          </div>
+                      </div>
+                  </div>
+                  <div class="process-item col-xs-6 col-sm-3">
+                      <div class="process-box">
+                          <div class="process-item-ico">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/step-4.png" %>
+                          </div>
+                          <div class="process-item-text">
+                              <div class="title">Giao hàng</div>
+                          </div>
+                          <div class="process-item-cont">
+                              Thanh toán phí vận chuyển, Buybid sẽ tiến hành giao hàng cho bạn.<br>Kết thúc
+                              quá trình mua hàng và vận chuyển.
+                          </div>
+                          <div class="process-item-step">
+                              4
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </section>
+
+      <section id="hotpros">
+          <div class="sec-head">
+              <div class="sec-title">
+                  <h4>Sản phẩm hot</h4>
+              </div>
+          </div>
+          <div class="sec-body">
+            <div class="product-slider" class="row" data-hook>
+              <div class="owl-carousel owl-theme product-carousel products-container api-streamer"
+                stream-order="0" stream-type="product-slide"
+                stream-trends="<%= BuybidCommon::TrendNames::HOT %>"
+                stream-api="/api/v1/products?trend=<%= BuybidCommon::TrendNames::HOT %>&page=1&per_page=10" style="opacity: 1; display: block;">
+                <%# product-item %>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section id="auction">
+          <div class="sec-head">
+              <div class="sec-title">
+                  <h4>Đấu giá</h4>
+              </div>
+              <div class="sec-news">
+              </div>
+          </div>
+          <div class="sec-body">
+              <div class="sec-left">
+                  <div class="sec-avatar-area">
+                      <div class="frontpage_square">
+                          <div class="sec-avatar">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/auction.png" %>
+                              <div class="mask">
+                                  <h2>Đấu giá</h2>
+                                  <p>Hỗ trợ đấu giá trọn gói 24/7</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <%= link_to "Shop Now", auction_url, class: "btn btn-danger sec-shopnow" %>
+              </div>
+              <div class="sec-right">
+                  <div class="sec-seller-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Seller thường giao dịch</h4>
+                          <div class="read-more">
+                              <a href="/auction/sellers-list">Xem thêm</a>
+                          </div>
+                      </div>
+                      <div class="sec-right-body">
+                          <div class="seller-grid sellers-container api-streamer"
+                            stream-order="1" stream-type="seller-grid"
+                            stream-business-name="<%= BuybidCommon::BusinessNames::AUCTION %>"
+                            stream-api="/api/buybid/sellers?business=<%= BuybidCommon::BusinessNames::AUCTION %>&order=order_count&page=1&per_page=9">
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="sec-full">
+                  <div class="sec-cat-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Danh mục</h4>
+                      </div>
+                      <div class="sec-right-body">
+                          <div class="categories-slider">
+                              <div class="owl-carousel owl-theme categories-carousel categories-container api-streamer"
+                                stream-order="1" stream-type="category-slide"
+                                stream-business-name="<%= BuybidCommon::BusinessNames::AUCTION %>"
+                                stream-api="/api/v1/taxons?business=<%= BuybidCommon::BusinessNames::AUCTION %>&page=1&per_page=10">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sec-pro-area">
+                    <div class="sec-right-head">
+                        <h4 class="sec-right-title">Sản phẩm</h4>
+                    </div>
+                    <div class="sec-right-body">
+                      <div class="product-slider" class="row" data-hook>
+                        <div class="owl-carousel owl-theme product-carousel products-container api-streamer"
+                          stream-order="1" stream-type="product-slide"
+                          stream-business-name="<%= BuybidCommon::BusinessNames::AUCTION %>"
+                          stream-api="/api/v1/products?business=<%= BuybidCommon::BusinessNames::AUCTION %>&exclude_trends[]=<%= BuybidCommon::TrendNames::HOT %>&page=1&per_page=15" style="opacity: 1; display: block;">
+                          <%# product-item %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </section>
+
+      <section id="order">
+          <div class="sec-head">
+              <div class="sec-title">
+                  <h4>Mua hộ</h4>
+              </div>
+              <div class="sec-news">
+              </div>
+          </div>
+          <div class="sec-body">
+              <div class="sec-left">
+                  <div class="sec-avatar-area">
+                      <div class="frontpage_square">
+                          <div class="sec-avatar">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/buybid.png" %>
+                              <div class="mask">
+                                  <h2>Mua hàng hộ</h2>
+                                  <p>
+                                      Từ tất cả các website<br>
+                                      của Nhật Bản
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <%= link_to "Shop Now", shop_url, class: "btn btn-danger sec-shopnow" %>
+              </div>
+              <div class="sec-right">
+                  <div class="sec-seller-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Seller thường giao dịch</h4>
+                          <div class="read-more">
+                              <a href="/order/sellers-list">Xem thêm</a>
+                          </div>
+                      </div>
+                      <div class="seller-grid sellers-container api-streamer"
+                        stream-order="2" stream-type="seller-grid"
+                        stream-business-name="<%= BuybidCommon::BusinessNames::SHOP %>"
+                        stream-api="/api/buybid/sellers?business=<%= BuybidCommon::BusinessNames::SHOP %>&order=order_count&page=1&per_page=9">
+                      </div>
+                  </div>
+              </div>
+              <div class="sec-full">
+                  <div class="sec-cat-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Danh mục</h4>
+                      </div>
+                      <div class="sec-right-body">
+                          <div class="categories-slider">
+                              <div class="owl-carousel owl-theme categories-carousel categories-container api-streamer"
+                                stream-order="2" stream-type="category-slide"
+                                stream-business-name="<%= BuybidCommon::BusinessNames::SHOP %>"
+                                stream-api="/api/v1/taxons?business=<%= BuybidCommon::BusinessNames::SHOP %>&page=1&per_page=10">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sec-pro-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Sản phẩm</h4>
+                      </div>
+                      <div class="sec-right-body">
+                        <div class="product-slider" class="row" data-hook>
+                          <div class="owl-carousel owl-theme product-carousel products-container api-streamer"
+                            stream-order="2" stream-type="product-slide"
+                            stream-business-name="<%= BuybidCommon::BusinessNames::SHOP %>"
+                            stream-api="/api/v1/products?business=<%= BuybidCommon::BusinessNames::SHOP %>&exclude_trends[]=<%= BuybidCommon::TrendNames::HOT %>&page=1&per_page=15" style="opacity: 1; display: block;">
+                            <%# product-item %>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section id="partner">
+          <div class="sec-head">
+              <div class="sec-title">
+                  <h4>Đối tác chiến lược</h4>
+              </div>
+              <div class="sec-news">
+              </div>
+          </div>
+          <div class="sec-body">
+              <div class="sec-left">
+                  <div class="sec-avatar-area">
+                      <div class="frontpage_square">
+                          <div class="sec-avatar">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/partner.png" %>
+                              <div class="mask">
+                                  <h2>Đối tác Buybid</h2>
+                                  <p>
+                                      An toàn tuyệt đối<br>
+                                      Giá trị tốt nhất thị trường
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <%= link_to "Xem thêm đối tác", partner_url, class: "btn btn-danger sec-shopnow" %>
+              </div>
+              <div class="sec-right">
+                  <div class="partner-slider">
+                      <div class="owl-carousel owl-theme partner-carousel partners-container api-streamer"
+                        stream-order="3" stream-type="partner-slide"
+                        stream-business-name="<%= BuybidCommon::BusinessNames::PARTNER %>"
+                        stream-api="/api/buybid/sellers?business=<%= BuybidCommon::BusinessNames::PARTNER %>&order=order_count_desc&page=1&per_page=9">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="sec-foot">
+          </div>
+      </section>
+
+      <section id="shop">
+          <div class="sec-head">
+              <div class="sec-title">
+                  <h4>Buybid shop</h4>
+              </div>
+              <div class="sec-news">
+              </div>
+          </div>
+          <div class="sec-body">
+              <div class="sec-left">
+                  <div class="sec-avatar-area">
+                      <div class="frontpage_square">
+                          <div class="sec-avatar">
+                              <%= image_tag "#{public_statics_assets_root}/assets/images/icons/buybidshop.png" %>
+                              <div class="mask">
+                                  <h2>Buybid Shop</h2>
+                                  <p>Cửa hàng của Buybid</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                <%= link_to "Shop Now", buybidshop_url, class: "btn btn-danger sec-shopnow" %>
+              </div>
+              <div class="sec-right">
+                  <div class="sec-seller-area">
+                     <div class = 'sec-banner-area'>
+                       <%= image_tag "#{public_statics_assets_root}/assets/images/banners/Buybidshop_banner_May.png"%>
+                     </div>
+                  </div>
+              </div>
+              <div class="sec-full"> 
+                  <div class="sec-cat-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Danh mục</h4>
+                      </div>
+                      <div class="sec-right-body">
+                          <div class="categories-slider">
+                              <div class="owl-carousel owl-theme categories-carousel categories-container api-streamer"
+                                stream-order="4" stream-type="category-slide"
+                                stream-business-name="<%= BuybidCommon::BusinessNames::STORE %>"
+                                stream-api="/api/v1/taxons?business=<%= BuybidCommon::BusinessNames::STORE %>&page=1&per_page=10">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sec-pro-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Sản phẩm nổi bật</h4>
+                      </div>
+                      <div class="sec-right-body">
+                        <div class="product-slider" class="row" data-hook>
+                          <div class="owl-carousel owl-theme product-carousel products-container api-streamer"
+                            stream-order="4" stream-type="product-slide"
+                            stream-business-name="<%= BuybidCommon::BusinessNames::STORE %>"
+                            stream-api="/api/v1/products?business=<%= BuybidCommon::BusinessNames::STORE %>&include_trends[]=<%= BuybidCommon::TrendNames::HOT %>&page=1&per_page=15" style="opacity: 1; display: block;">
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  
+                  <div class="sec-pro-area">
+                      <div class="sec-right-head">
+                          <h4 class="sec-right-title">Sản phẩm mới về</h4>
+                      </div>
+                      <div class="sec-right-body">
+                        <div class="product-slider" class="row" data-hook>
+                          <div class="owl-carousel owl-theme product-carousel products-container api-streamer"
+                            stream-order="4" stream-type="product-slide"
+                            stream-business-name="<%= BuybidCommon::BusinessNames::STORE %>"
+                            stream-api="/api/v1/products?business=<%= BuybidCommon::BusinessNames::STORE %>&include_trends[]=<%= BuybidCommon::TrendNames::NEW %>&page=1&per_page=15" style="opacity: 1; display: block;">
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </div>
+</main>

@@ -1,0 +1,103 @@
+<div id="menu-mobile" class="modal-background menu-mobile">
+    <!-- Modal content -->
+    <div class="menu-mobile-content">
+        <div class="menu-mobile-header">
+            <%= link_to "/", class: "logo" do %>
+                <%= image_tag "#{public_statics_assets_root}/assets/images/logo.png" %>
+            <% end %>
+            <span class="close"><i class="fa fa-times"></i></span>
+        </div>
+        <div class="menu-mobile-body">
+            <ul class="menu-mobile-menu-list">
+                <li>
+                    <%= link_to auction_url do %>
+                        <span class="menu-mobile-ico">
+                            <%= image_tag "#{public_statics_assets_root}/assets/images/icons/auction.png" %>
+                        </span>
+                        Đấu giá
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to shop_url do %>
+                        <span class="menu-mobile-ico">
+                            <%= image_tag "#{public_statics_assets_root}/assets/images/icons/buybid.png" %>
+                        </span>
+                        Mua hộ
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to partner_url do %>
+                        <span class="menu-mobile-ico">
+                            <%= image_tag "#{public_statics_assets_root}/assets/images/icons/partner.png" %>
+                        </span>
+                        Đối tác
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to buybidshop_url do %>
+                        <span class="menu-mobile-ico">
+                            <%= image_tag "#{public_statics_assets_root}/assets/images/icons/buybidshop.png" %>
+                        </span>
+                        Buybid Shop
+                    <% end %>
+                </li>
+            </ul>
+
+            <ul class="menu-mobile-contact-list">
+                <li>
+                    <%= link_to "tel:19007163" do %>
+                        <span class="menu-mobile-ico">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                        1900 7163
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to "mailto:contact@buybid.jp" do %>
+                        <span class="menu-mobile-ico">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        contact@buybid.jp
+                    <% end %>
+                </li>
+            </ul>
+
+            <ul class="menu-mobile-service-list">
+                <li>
+                    <%= link_to "/news" do %>
+                        <span class="menu-mobile-ico">
+                            <i class="fa fa-newspaper"></i>
+                        </span>
+                        Tin tức
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to "/support/how-to-buy" do %>
+                        <span class="menu-mobile-ico">
+                            <i class="fa fa-paste"></i>
+                        </span>
+                        Hướng dẫn mua hàng
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to "/support/estimate" do %>
+                        <span class="menu-mobile-ico">
+                            <i class="fa fa-calculator"></i>
+                        </span>
+                        Dự toán
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to "http://service.buybid.jp/" do %>
+                        <span class="menu-mobile-ico">
+                            <i class="fa fa-file-alt"></i>
+                        </span>
+                        Đặt hàng
+                    <% end %>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-mobile-footer">
+        </div>
+    </div>
+</div>

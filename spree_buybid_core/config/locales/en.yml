@@ -1,0 +1,21 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  taxon:
+    auction:
+      name: 'auction' 
+      description: 'Auction Description' 
+      meta_title: 'Auction meta title'
+      meta_description: 'Auction meta description'
+    shopper:
+      name: 'shopper' 
+      description: 'Shopper Description' 
+      meta_title: 'Shopper meta title'
+      meta_description: 'Shopper meta description'
+    partner:
+      name: 'partner' 
+      description: 'Partner Description' 
+      meta_title: 'Partner meta title'
+      meta_description: 'Partner meta description'

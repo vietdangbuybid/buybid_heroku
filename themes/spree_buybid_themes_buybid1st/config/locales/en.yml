@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  title: 
+    auctions: "Đấu giá"
+    shoppers: "Mua hàng hộ"
+    partners: "Đối tác Buybid"
+    buybidshops: "BUYBID SHOP" 
+
+  marquee:
+    auctions: "Hỗ trợ đấu giá trọn gói 24/7"
+    shoppers: "Từ tất cả các website của Nhật Bản"
+    partners: "Miễn phí dịch vụ"
+    buybidshops: "Cửa hàng của Buybid"
+    

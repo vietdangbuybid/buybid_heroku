@@ -1,0 +1,153 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  index: "STT"
+  name: "Name"
+  logo: "Logo"
+  category: "Category"
+  position: "Position"
+  visibility: "Visibility"
+  popularity: "Popularity"
+  action: "Action"
+  new_seller: "NEW SELLER"
+  delete_messge: "Are you sure that you want to delete"
+  buybid_seller_name: "Seller"
+  spree:
+    categories: "Categories"
+    businesses: "Businesses"
+    trends: "Trends"
+    brands: "Brands"
+    placeholder_cateogries: "Select your Categories"
+    placeholder_businesses: "Select your Businesses"
+    placeholder_trends: "Select your Trends"
+    placeholder_brands: "Select your Brands"
+  category:
+    name: Name
+    permalink: Permalink
+    description: Description
+    action: Action
+    index: Index
+    icon: Icon
+    business_taxon_ids: Business Taxon Ids 
+    business_type: Business Type 
+    permalink: Permalink
+    
+  seller:
+    title: "Seller"
+    default_position: 1 
+    order_count: "Order Count" 
+    index: "STT"
+    name: "Name"
+    logo: "Logo"
+    created_at: "Created At"
+    category: "Category"
+    position: "Position"
+    visibility: "Visible"
+    popularity: "Popular"
+    action: "Action"
+    preview_seller: "Seller"
+    details: "Details"
+    images: "Images"
+    seller_contact: "Contact"
+    edit_rating_and_evals: "Rating and Evaluations"
+    search: "Search"
+    name: "Name"
+    URL: "URL"
+    deleted: "Deleted"
+    logo: "LOGO"
+    account_code: "Account Code"
+    phone_number: "Phone Number"
+    description: "Description"
+    rating_point: "Rating Point"
+    rating_total_good: "Total good rating"
+    rating_total_bad: "Total bad rating"
+    rating_is_suspended: "Suspended rating"
+    rating_is_deleted: "Deleted rating"
+    position: "Position"
+    rating_url: "URL"
+    comprehensive_evaluation: "Comprehensive Evaluation"
+    auction: "New Auction Seller"
+    shop: "New Shop Seller"
+    partner: "New Partner"
+    store: "New Store Seller"
+    last_evaluation: "Last Evaluation"
+    visible: "Visible"
+    not_visible: "Not Visible"
+    popular: "Popular"
+    not_popular: "Not popular"
+    brand: "Brand"
+    category: "Category"
+    main_category: "Main category"
+    meta_keywords: "Meta Keywords"
+    meta_title: "Meta title"
+    meta_description: "Meta description"
+    actions:
+      title: "Actions"
+      new: "New Logo"
+      create: "Create"
+      edit: "Edit"
+      delete: "Delete"
+      update: "Update"
+      cancel: "Cancel"
+    image:
+      logo: "Logo"
+      in_use: "In Use"
+      new_logo: "New Logo"
+      index: "Index"
+      thumbnail: "Thumbnail"
+      description: "Description"
+      file: "File"
+      filename: "File Name"
+      size: "Size"
+      or: "or"
+    new:
+      auction: "Auction"
+      shop: "Shop"
+      partner: "Partner"
+      store: "Store"
+    contact:
+      new: "New Contact"
+      title: "Contacts"
+      first_name: 'First Name'
+      last_name: 'Last Name'
+      zip_code: 'Zip Code'
+      address1: 'Address 1'
+      address2: 'Address 2'
+      city: 'City'
+      country: 'Country'
+      state: 'State'
+      phone: 'Phone No.'
+      alternative_phone: "Alternative Phone No."
+      update_seller: "Update Contact"
+      new_contact: "New Contact"
+      province_name: "Province Name"

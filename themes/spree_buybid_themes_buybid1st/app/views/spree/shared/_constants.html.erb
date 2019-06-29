@@ -1,0 +1,79 @@
+<script>
+  const PUBLIC_STATICS_ASSETS_ROOT = '<%= public_statics_assets_root%>';
+  
+  function BuybidFrontend () {}
+
+  BuybidFrontend.BusinessNames = {
+    AUCTION: '<%=  BuybidCommon::BusinessNames::AUCTION %>',
+    SHOP: '<%=  BuybidCommon::BusinessNames::SHOP %>',
+    PARTNER: '<%=  BuybidCommon::BusinessNames::PARTNER %>',
+    STORE: '<%= BuybidCommon::BusinessNames::STORE %>'
+  }
+
+  BuybidFrontend.TrendNames = {
+    HOT: '<%=BuybidCommon::TrendNames::HOT%>',
+    NEW: '<%=BuybidCommon::TrendNames::NEW%>',
+    POPULAR: '<%=BuybidCommon::TrendNames::POPULAR%>'
+  } 
+
+  BuybidFrontend.BusinessNamesArray = Object.values(BuybidFrontend.BusinessNames);
+  BuybidFrontend.TrendNamesArray = Object.values(BuybidFrontend.TrendNames);
+
+  BuybidFrontend.BusinessNamesDisplay = {
+    SHOP: 'Mua hộ',
+    AUCTION: 'Đấu giá',
+    PARTNER: 'Đối tác',
+    STORE: 'Shop'
+  };
+
+  BuybidFrontend.TrendNames = {
+    HOT: '<%=  BuybidCommon::TrendNames::HOT %>',
+    NEW: '<%=  BuybidCommon::TrendNames::NEW %>'
+  }
+  BuybidFrontend.TrendNamesArray = Object.values(BuybidFrontend.TrendNames);
+  BuybidFrontend.TrendNamesDisplay = {
+    HOT: '',
+    NEW: ''
+  };
+
+  BuybidFrontend.SellerImageDefault = {
+    BUYBID: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/buybid.png`,
+    STORE: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/avatar-buybidshop.png`,
+    AUCTION: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/avatar-auction.png`,
+    SHOP: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/estimate-order.png`,
+    PARTNER: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/partner.png`
+  }
+
+  BuybidFrontend.ProductImageDefault = {
+    BUYBID: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/buybid.png`,
+    STORE: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/avatar-buybidshop.png`,
+    AUCTION: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/avatar-auction.png`,
+    SHOP: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/estimate-order.png`,
+    PARTNER: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/partner.png`
+  }
+
+  BuybidFrontend.CategoryImageDefault = {
+    BUYBID: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/buybid.png`,
+    STORE: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/avatar-buybidshop.png`,
+    AUCTION: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/avatar-auction.png`,
+    SHOP: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/estimate-order.png`,
+    PARTNER: `${PUBLIC_STATICS_ASSETS_ROOT}/assets/images/icons/partner.png`
+  }
+
+  BuybidFrontend.CoinSymbol = {
+    JPY: '¥',
+    VND: '₫'
+  };
+
+  BuybidFrontend.ExchangeRate = {
+    JPY_TO_JPY: 1,
+    JPY_TO_VND: 218
+  }
+
+  BuybidFrontend.ProductGridData = {
+    permalink: "Fake permalink",
+    name_in_vn: "Product Name In VN",
+    expired_in: "10h",
+  }
+
+</script>

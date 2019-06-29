@@ -1,0 +1,29 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require spree/backend
+
+ *= require_self
+ *= require_tree .
+ *= require spree/backend/spree_editor
+*/
+#ui-datepicker-div table.ui-datepicker-calendar td .ui-state-default.ui-state-active{
+  background-color: #007fff;
+  color: #fff;
+}
+
+td {
+  -webkit-transition: all 150ms; / For Safari 3.1 to 6.0 /
+  transition: all 150ms;
+}
+
+tr:nth-child(even) {background: #efefef}
+tr:nth-child(odd) {background: #fff}
+tr:hover td {background: #478dc170}
+
+.pagination-sm > li > a {
+  padding: 5px 8px;
+  border: none;
+}

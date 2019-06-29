@@ -1,0 +1,26 @@
+<%content_for :page_title do%>
+  <% plural_resource_name(Buybid::Seller)%>
+<%end%>
+
+<%=@seller.name%>
+<br/>
+<%=@seller.description%>
+<br/>
+<%=@seller.rating_total_good%>
+<br/>
+<%=@seller.rating_total_bad%>
+<br/>
+<%=@seller.rating_is_suspended%>
+<br/>
+<%=@seller.rating_is_deleted%>
+<br/>
+<%=@seller.popular%>
+<br/>
+<%=@seller.visible%>
+<br/>
+<%=@seller.auction%>
+<br/>
+<%=@seller.shop%>
+<br/>
+<%=@seller.partner%>
+<br/>

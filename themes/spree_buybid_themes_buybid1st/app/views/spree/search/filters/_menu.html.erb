@@ -1,0 +1,436 @@
+ <div class="sec-page-body"> 
+    <div class="sec-left sidebar">
+      <div id="cat-list" class="sec-page-cat-area sidebar__inner">
+        <div class="sec-cat-head">
+            Lọc sản phẩm
+            <div class="cat-button-area mobile">
+                <span id="cat-button" class="cat-button">
+                    <i class="fa fa-filter"></i>
+                </span>
+            </div>
+        </div>
+        <div class="sec-cat-body">
+            <div class="search-filter-area">
+                <div class="panel-group" id="accordion">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-business">
+                                    <span>Loại hình kinh doanh</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-business" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native auction" type="radio" name="optradio-business" value="" onclick="BuybidSearch.filterBusiness('auction')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Đấu giá
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native shop" type="radio"
+                                                name="optradio-business" value="" onclick="BuybidSearch.filterBusiness('shop')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Mua hộ
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native store" type="radio"
+                                                name="optradio-business" value="" onclick="BuybidSearch.filterBusiness('store')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Shop
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-auctionid">
+                                    <span>Auction ID</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-auctionid" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-text">
+                                        <label>
+                                            <span class="filter-item-label">
+                                                Tìm theo ID sản phẩm:
+                                            </span>
+                                            <div class="input-group">
+                                                <input class="form-control filter-product-code-native"
+                                                    type="text" value=""
+                                                    placeholder="Nhập auction ID">
+                                                <div class="input-group-btn product-code-btn">
+                                                    <button type="button"
+                                                        class="btn btn-danger product-code-btn" ><span
+                                                            class="fa fa-search" onclick = "BuybidSearch.filterProductCode()"></span></button>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-text">
+                                        <label>
+                                            <span class="filter-item-label">
+                                                Tìm theo ID seller:
+                                            </span>
+                                            <div class="input-group">
+                                                <input class="form-control filter-seller-code-native"
+                                                    type="text" value=""
+                                                    placeholder="Nhập seller ID">
+                                                <div class="input-group-btn seller-code-btn">
+                                                    <button type="button"
+                                                        class="btn btn-danger seller-code-btn"><span
+                                                            class="fa fa-search" onclick="BuybidSearch.filterSellerCode()"></span></button>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-category">
+                                    <span>Danh mục sản phẩm</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-category" class="panel-collapse collapse in">
+                            <div class="panel-body filter-text-box">
+                                <div class="filter-panel-head">
+                                    <div class="search-bar">
+                                        <input type="text"
+                                            class="form-control filter-text-input"
+                                            placeholder="Tìm Danh Mục ...">
+                                        <span class="input-group-icon">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="filter-panel-body filter-text-list scrollable"
+                                    data-simplebar data-simplebar-auto-hide="false">
+                                    <% categories.each do |category|%>
+                                        <div class="filter-item filter-check">
+                                            <label>
+                                                <%= radio_button_tag(category.name, "", search_category_checked?(category.name), class: 'filter-item-native', onclick: "BuybidSearch.filterCategory('#{category.name}')") %>
+                                                <span class="filter-item-ui"></span>
+                                                <span class="filter-item-label">
+                                                    <%= category.name%>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-price">
+                                    <span>Giá sản phẩm</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-price" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-text filter-price">
+                                        <label>
+                                            <span class="filter-item-label">
+                                                Giá hiện tại:
+                                            </span>
+                                            <div class="filter-item-group">
+                                                <div class="filter-item-label-inline">Từ:
+                                                </div>
+                                                <div class="input-group">
+                                                    <input
+                                                        class="form-control filter-item-native current-price-from"
+                                                        type="number" >
+                                                    <span class="input-group-addon">₫</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label>
+                                            <div class="filter-item-group">
+                                                <div class="filter-item-label-inline">Đến:
+                                                </div>
+                                                <div class="input-group">
+                                                    <input
+                                                        class="form-control filter-item-native current-price-to"
+                                                        type="number">
+                                                    <span class="input-group-addon">₫</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label>
+                                            <button
+                                                class="btn btn-sm btn-danger pull-right current-price-find" onclick="BuybidSearch.filterCurrentPrice()">Tìm</button>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-text filter-price">
+                                        <label>
+                                            <span class="filter-item-label">
+                                                Giá mua ngay:
+                                            </span>
+                                            <div class="filter-item-group">
+                                                <div class="filter-item-label-inline">Từ:
+                                                </div>
+                                                <div class="input-group">
+                                                    <input
+                                                        class="form-control filter-item-native buynow-price-from"
+                                                        type="number">
+                                                    <span class="input-group-addon">₫</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label>
+                                            <div class="filter-item-group">
+                                                <div class="filter-item-label-inline">Đến:
+                                                </div>
+                                                <div class="input-group">
+                                                    <input
+                                                        class="form-control filter-item-native buynow-price-to"
+                                                        type="number">
+                                                    <span class="input-group-addon">₫</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label>
+                                            <button
+                                                class="btn btn-sm btn-danger pull-right buynow-price-find" onclick="BuybidSearch.filterBuynowPrice()">Tìm</button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-endtime">
+                                    <span>Thời điểm kết thúc</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-endtime" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-select">
+                                        <label>
+                                            <span class="filter-item-label">
+                                                Kết thúc sau:
+                                            </span>
+                                            <select class="form-control filter-item-native.expire-in" onchange="BuybidSearch.filterExpiredIn()">
+                                                <option value="0">Lựa chọn thời điểm</option>
+                                                <option value="1h">1 giờ</option>
+                                                <option value="2h">2 giờ</option>
+                                                <option value="3h">3 giờ</option>
+                                                <option value="6h">6 giờ</option>
+                                                <option value="12h">12 giờ</option>
+                                                <option value="1d">1 ngày</option>
+                                                <option value="2d">2 ngày</option>
+                                                <option value="3d">3 ngày</option>
+                                                <option value="5d">5 ngày</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-status">
+                                    <span>Tình trạng sản phẩm</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-status" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native all" type="radio"
+                                                name="optradio-status" value="" checked onclick="BuybidSearch.filterProductStatus('all')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Tất cả
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native new" type="radio"
+                                                name="optradio-status" value="" onclick="BuybidSearch.filterProductStatus('new')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Mới
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native used" type="radio"
+                                                name="optradio-status" value="" onclick="BuybidSearch.filterProductStatus('used')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Đã qua sử dụng
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-seller">
+                                    <span>Người bán</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-seller" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native all" type="radio"
+                                                name="optradio-seller" value="" checked onclick="BuybidSearch.filterSellerType('all')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Tất cả
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native shop" type="radio"
+                                                name="optradio-seller" value="" onclick="BuybidSearch.filterSellerType('shop')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Shop
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native individual" type="radio"
+                                                name="optradio-seller" value="" onclick="BuybidSearch.filterSellerType('individual')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Cá nhân
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-ship">
+                                    <span>Free ship Quốc nội Nhật</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-ship" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="filter-panel-body">
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native NA" type="radio"
+                                                name="optradio-ship" value="" checked onclick="BuybidSearch.filterFreeship('NA')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Không quan tâm
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native freeship" type="radio"
+                                                name="optradio-ship" value="" onclick="BuybidSearch.filterFreeship('freeship')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Free ship
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="filter-item filter-radio">
+                                        <label>
+                                            <input class="filter-item-native fee_applied" type="radio"
+                                                name="optradio-ship" value="" onclick="BuybidSearch.filterFreeship('fee_applied')">
+                                            <span class="filter-item-ui"></span>
+                                            <span class="filter-item-label">
+                                                Có phí
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-brand">
+                                    <span>Thương hiệu</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-brand" class="panel-collapse collapse in">
+                            <div class="panel-body filter-text-box">
+                                <div class="filter-panel-head">
+                                    <div class="search-bar">
+                                        <input type="text"
+                                            class="form-control filter-text-input"
+                                            placeholder="Tìm Thương Hiệu ...">
+                                        <span class="input-group-icon">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="filter-panel-body filter-text-list scrollable"
+                                    data-simplebar data-simplebar-auto-hide="false">
+                                    <% brands.each do |brand|%>
+                                        <div class="filter-item filter-check">
+                                            <label>
+                                                <%=radio_button_tag(brand.name,"",search_brand_checked?(brand.name),onclick: "BuybidSearch.filterBrand('#{brand.name}')")%>
+                                                <span class="filter-item-ui"></span>
+                                                <span class="filter-item-label">
+                                                    <%= brand.name%>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+    </div>
+ </div>

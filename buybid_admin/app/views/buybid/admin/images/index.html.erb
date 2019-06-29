@@ -1,0 +1,42 @@
+<%= render partial: "buybid/admin/shared/seller_tabs", locals: {current: :images}%>
+
+<%= content_for :page_title do%>
+    Image
+<% end %>
+
+<%= content_for :page_actions do%>
+    <%= button_link_to I18n.t('seller.actions.new'), new_admin_seller_image_path(@seller), class: 'btn btn-primary btn-success', icon: 'add'%>
+<% end %>
+
+<table class = "table sortable" data-hook = "image-table">
+    <thead>
+        <tr data-hook = "image-header">
+            <th> <%= I18n.t('seller.image.index')%></th>
+            <th> <%= I18n.t('seller.image.thumbnail')%></th>
+            <th> <%= I18n.t('seller.image.filename')%></th>
+            <th> <%= I18n.t('seller.image.in_use')%></th>
+            <th class = 'actions actions-2 text-center'> Edit/Delete </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% image_index = 1 %>
+        <% @images.each do |image| %>
+            <tr>
+                <div class = "row">
+                    <td class = "image-index"> <%= image_index%> </td>
+                    <td class = "image">
+                        <%= link_to image_tag(main_app.url_for(image.url(:mini))), main_app.url_for(image.url(:mini) ) %>
+                    </td>
+
+                    <td class = "image_attachment_filename"><%= image.attachment_file_name %></td>
+                    <td><%= button_link_to "", admin_seller_image_set_logo_path(@seller.id, image.id), class: image_button_style(@seller,image) ,icon: image_button_icon(@seller, image)  %></td>
+                    <td class = 'actions actions-2 text-center'>
+                        <%= link_to_with_icon 'edit', I18n.t('seller.actions.edit'), edit_admin_seller_image_path(@seller.id, image.id), class: 'btn btn-primary btn-sm', no_text: true, data: { action: 'edit' }%>
+                        <%= link_to_with_icon 'delete', I18n.t('seller.actions.delete'), "/admin/sellers/#{@seller.id}/images/#{image.id}", method: :delete, class: 'btn btn-danger btn-sm', no_text: true %>
+                    </td>
+                </div>
+            </tr>
+            <% image_index = image_index + 1 %>
+        <%end %>
+    </tbody>
+</table>

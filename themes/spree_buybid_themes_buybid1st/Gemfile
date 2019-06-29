@@ -1,0 +1,16 @@
+require_relative '../../buybid_common/lib/buybid_common/variants'
+
+source 'https://rubygems.org'
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'spree_core', BuybidCommon::SPREE_VERSION
+gem 'spree_api', BuybidCommon::SPREE_VERSION
+gem 'spree_frontend', BuybidCommon::SPREE_VERSION
+gem 'spree_auth_devise', BuybidCommon::SPREE_AUTH_DEVISE_VERSION
+gem 'spree_gateway', BuybidCommon::SPREE_GATEWAY_VERSION
+
+gemspec

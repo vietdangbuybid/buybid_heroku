@@ -1,0 +1,67 @@
+<div data-hook = "admin_seller_rating_and_evaluation_for">
+    <div class = 'row'>
+        <div class = "col-xs-12 col-md-6" data-hook = "admin_seller_form_left">
+            <div data-hook = "admin_seller_form_rating_point">
+                <%= f.field_container :rating_point, class: ['form-group'] do%>
+                    <%= f.label :rating_point%>
+                    <%= f.text_field :rating_point, value: @seller.rating_point, class: 'form-control title' %>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_rating_total_good">
+                <%= f.field_container :rating_total_good, class: ['form-group'] do%>
+                    <%= f.label :rating_total_good%>
+                    <%= f.text_field :rating_total_good, value: @seller.rating_total_good,  class: 'form-control title' %>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_rating_total_bad">
+                <%= f.field_container :rating_total_bad, class: ['form-group'] do%>
+                    <%= f.label :rating_total_bad%>
+                    <%= f.text_field :rating_total_bad, value: @seller.rating_total_bad,  class: 'form-control title' %>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_rating_is_suspended">
+                <%= f.field_container :rating_is_suspended, class: ['form-group'] do%>
+                    <%= f.label :rating_is_suspended%>
+                    <%= f.text_field :rating_is_suspended, value: @seller.rating_is_suspended, class: 'form-control title' %>
+                <%end%>
+            </div>
+        </div>
+
+        <div class = "col-xs-12 col-md-6" data-hook = "admin_seller_form_right">
+            <div data-hook = "admin_seller_form_rating_is_deleted">
+                <%= f.field_container :rating_is_deleted, class: ['form-group'] do%>
+                    <%= f.label :rating_is_deleted%>
+                    <%= f.text_field :rating_is_deleted, value: @seller.rating_is_deleted, class: 'form-control title' %>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_rating_url">
+                <%= f.field_container :rating_url, class: ['form-group'] do%>
+                    <%= f.label :rating_url%>
+                    <%= f.text_field :rating_url, value: @seller.rating_url, class: 'form-control title' %>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_comprehensive_eval">
+                <%= f.field_container :comprehensive_evaluation, class: ['form-group'] do%>
+                    <%= f.label :comprehensive_evaluation%>
+                    <%= f.text_field :comprehensive_evaluation, value: @seller.comprehensive_evaluation, class: 'form-control title' %>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_last_eval">
+                <%= f.field_container :last_evaluation, class: ['form-group'] do%>
+                    <%= f.label :last_evaluation%>
+                    <%= f.text_field :last_evaluation, value: @seller.last_evaluation,  class: 'form-control title' %>
+                <%end%>
+            </div>
+        </div>
+        <div class = "col col-xs-12 col-md-12" style = "text-align: center">
+            <%= f.submit I18n.t('seller.actions.update'), {class: "btn btn-primary", icon: "glyphicon glyphicon-ok"} %>
+            <%= button_link_to I18n.t('seller.actions.cancel'), {class: "btn btn-light", icon: "glyphicon glyphicon-remove"} %>
+        </div>
+    </div>
+</div>

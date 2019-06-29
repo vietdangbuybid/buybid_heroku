@@ -1,0 +1,6 @@
+/*
+ *  The frontend artifacts are moved to bellow theme module
+ *= require_tree .
+ *= require_self
+ *= require spree/frontend/spree_buybid_themes_buybid1st
+ */

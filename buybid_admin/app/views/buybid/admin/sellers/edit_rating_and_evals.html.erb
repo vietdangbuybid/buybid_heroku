@@ -1,0 +1,9 @@
+<%= render partial: "buybid/admin/shared/seller_tabs", locals: { current: :rating_and_evals } %>
+<%= content_for :page_title do%>
+    Ratings and evaluations 
+<% end %>
+<%= form_for @seller,  url: update_admin_seller_path(@seller, @list_type), html: { multipart: true, method: :put } do |f| %>
+    <fieldset>
+        <%= render partial: "buybid/admin/sellers/rating_and_evals_form", locals: {f: f} %>
+    </fieldset>
+<% end %>

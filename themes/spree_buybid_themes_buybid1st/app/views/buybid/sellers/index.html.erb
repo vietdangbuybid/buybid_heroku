@@ -1,0 +1,38 @@
+<% content_for :sidebar do %>
+  <div data-hook="homepage_sidebar_navigation">
+<% end %>
+
+<div class = 'seller-bar' style = "background_color: 'yellow'; height: 20px">
+  <h4><%= I18n.t('seller.auction') %> </h4>
+</div>
+ 
+<% if @home_sellers[:auction][:all].any? %>
+  <div class = 'row', id = 'auction-sellers' data-hook = 'auction-sellers-wrap'>
+    <%= render partial: 'buybid/sellers/seller', collection: @home_sellers[:auction][:all], local: {sellers: @home_sellers[:auction][:all]} %>
+  </div>
+<% end %>
+
+<div class = 'seller-bar' style = "background_color: 'yellow'; height: 20px">
+  <h4> <%= I18n.t('seller.shopper') %> </h4>
+</div>
+
+
+<div class = 'seller-bar'>
+  <% if @home_sellers[:shopper][:all].any? %>
+    <div class = 'row', id = 'shopper-sellers' data-hook = 'shopper-sellers-wrap'>
+      <%= render partial: 'buybid/sellers/seller', collection: @home_sellers[:shopper][:all] , local: {sellers: @home_sellers[:shopper][:all]} %>
+    </div>
+  <% end %>
+</div>
+
+<div class = 'seller-bar' style = "background_color: 'yellow'; height: 20px">
+  <h4> <%= I18n.t('seller.partner') %> </h4>
+</div>
+
+<div class = 'seller-bar'>
+  <% if @home_sellers[:partner][:all].any? %>
+    <div class = 'row', id = 'partner-sellers' data-hook = 'partner-sellers-wrap'>
+      <%= render partial: 'buybid/sellers/seller', collection: @home_sellers[:partner][:all], local: {sellers: @home_sellers[:auction][:all]} %>
+    </div>
+  <% end %>
+</div>

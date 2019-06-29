@@ -1,0 +1,14 @@
+
+
+<%# render partial: 'buybid/admin/shared/seller_tabs', locals: { current: :details }%>
+
+<%= content_for :page_title do%>
+  Details
+<%end%>
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @seller } %>
+<%= form_for @seller, url: update_admin_seller_path(@seller.id, @list_type), method: :put do |f|%>
+  <%= render partial: "form", locals: {f: f}%>
+  <%# f.submit "Update", {class: "btn btn-success", icon: "glyphicon glyphicon-ok" } %>
+  <!-- OR  -->
+  <%# button_link_to "Cancel", admin_sellers_path(@list_type) , { class: "btn btn-light", icon: "glyphicon glyphicon-remove" } %>
+<% end%>

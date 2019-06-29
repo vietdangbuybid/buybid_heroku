@@ -1,0 +1,8 @@
+
+<%= content_for :page_title do%>
+  <%= link_to plural_resource_name(Buybid::Seller), admin_sellers_path(@list_type) %> / New 
+<%end%>
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @seller } %>
+<%= form_for @seller, url: create_admin_sellers_path(@list_type), method: :post do |f|%>
+  <%= render partial: "form", locals: {f: f}%>
+<% end %>

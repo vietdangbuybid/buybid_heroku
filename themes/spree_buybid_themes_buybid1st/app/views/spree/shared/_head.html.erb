@@ -1,0 +1,24 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- stylesheet -->
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/bootstrap.min.css", media: 'screen' %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/icofont.min.css" %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/animate.css" %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/magnific-popup.css" %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/owl.carousel.css" %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/fonts.css" %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/site.css", media: 'screen' %>
+<%= stylesheet_link_tag "#{public_statics_assets_root}/assets/styles/site-respon.css" %>
+
+<!--main style-->
+<%= render 'spree/shared/paths' %>
+<!--end main style-->
+
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
+<![endif]-->
+
+<%= yield :head %>

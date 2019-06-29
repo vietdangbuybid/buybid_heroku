@@ -1,0 +1,160 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Product) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_product), new_object_url, { class: "btn-success", icon: 'add', id: 'admin_new_product' } %>
+<% end if can?(:create, Spree::Product) %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_products_sidebar">
+
+    <%= search_form_for [:admin, @search] do |f| %>
+      <%- locals = {f: f} %>
+      <div data-hook="admin_products_index_search" class="row">
+        <div class="col-xs-12 col-md-12">
+          <div class="form-group">
+            <%= f.label :name_cont, Spree.t(:name) %>
+            <%= f.text_field :name_cont, size: 15, class: "form-control js-quick-search-target js-filterable" %>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <div class="form-group">
+            <%= f.label :variants_including_master_sku_cont, Spree.t(:sku) %>
+            <%= f.text_field :variants_including_master_sku_cont, size: 15, class: "form-control js-filterable" %>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <div class="form-group">
+            <%= f.label :name, Spree.t(:seller_name), class: "form-title" %> 
+            <%= f.select :id, options_from_collection_for_select(
+            Buybid::Seller.all, "id", "name", params[:q][:buybid_seller_id]), 
+            { include_blank: true }, 
+            { :class => 'form-control', 
+            :name => 'q[buybid_seller_id]'
+            } %>
+          </div>
+        </div>
+        <div class="col-xs-3 col-md-3">
+          <div class="form-group">
+            <%= f.label :categories, Spree.t(:categories), class: "form-title" %>
+            <%= f.select :id, options_from_collection_for_select(
+            Spree::Taxon.where(taxonomy_id: 1), "id", "name", params[:q][:taxon_id]), 
+            { include_blank: true }, 
+            { :class => 'form-control', 
+            :name => 'q[taxon_id]'
+            } %>
+          </div>
+        </div>
+        <div class="col-xs-3 col-md-3">
+          <div class="form-group">
+            <%= f.label :business, Spree.t(:business), class: "form-title" %>
+            <%= f.select_tag(:business, options_for_select([['All', 1], ['Auction', 2], ['Shop', 3], ['Partner', 4], ['Store', 5] ], :selected => params[:q][:business]), :name => "q[business]", class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-xs-3 col-md-3">
+          <div class="form-group">
+            <%= f.label :buybid_visible, Spree.t(:visible), class: "form-title" %>
+            <%= f.select_tag(:buybid_visible, options_for_select([['All', 1], ['visible', 2], ['Disable', 3]], :selected => params[:q][:buybid_visible]), :name => "q[buybid_visible]", class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-xs-3 col-md-3">
+          <div class="form-group">
+            <%= f.label :buybid_popular, Spree.t(:popular), class: "form-title" %>
+            <%= f.select_tag(:buybid_popular, options_for_select([['All', 1], ['True', 2], ['False', 3]], :selected => params[:q][:buybid_popular]), :name => "q[buybid_popular]", class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-12">
+          <div class="field checkbox">
+            <label>
+              <%= f.check_box :deleted_at_null, {checked: params[:q][:deleted_at_null] == '0'}, '0', '1' %>
+              <%= Spree.t(:show_deleted) %>
+            </label>
+          </div>
+          <div class="field checkbox">
+            <label>
+              <%= f.check_box :not_discontinued, {checked: params[:q][:not_discontinued] == '0'}, '0', '1' %>
+              <%= Spree.t(:show_discontinued ) %>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div data-hook="admin_products_index_search_buttons" class="form-actions">
+        <%= button Spree.t(:search), 'search' %>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
+
+<span>
+  <h5 class="text-primary" style="font-style: italic;">
+    Total: <b><%= @collection.where.not(buybid_seller_id: nil).distinct.count(:buybid_seller_id) %></b>
+  </h5>
+</span>
+
+<% if @collection.any? %>
+  <table class="table" id="listing_products">
+    <thead>
+      <tr data-hook="admin_products_index_headers">
+        <th class="text-left"><%= check_box_tag "check_all", "check_all", false, class: "check_all" %>
+          <script type="text/javascript">
+          $(document).on("click", ".check_all", function(e) {
+          $(".task-updatable").prop("checked", !this.checked);
+          $(".task-updatable").click();});
+          </script>
+        </th>
+        <th class="text-left"><%= Spree.t(:image) %></th>
+        <th class="text-left"><%= Spree.t(:sku) %></th>
+        <th class="text-left"><%= sort_link @search,:name, Spree.t(:name) %></th>
+        <th class="text-left"><%= Spree.t(:seller) %></th>
+        <th class="text-center">
+          <%= sort_link @search, :master_default_price_amount, Spree.t(:price) %>
+        </th>
+        <th class="text-left"><%= sort_link @search, :buybid_position, Spree.t(:visible), { default_order: "desc" } %>
+        </th>
+        <th class="text-left"><%= Spree.t(:popular) %></th>
+        <th class="text-center">
+          <%= sort_link @search, :updated_at, Spree.t(:updated), { default_order: "desc" } %>
+        </th>
+        <th data-hook="admin_products_index_header_actions" class="text-left"><%= Spree.t(:action) %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |product| %>
+          <tr <%== "style='color: red;'" if product.deleted? %> id="<%= spree_dom_id product %>" data-hook="admin_products_index_rows" class="<%= cycle('odd', 'even') %>">
+            <td class="image"><%= check_box_tag "", product.id, false, class: "task-updatable" %></td>
+            <td class="image"><%= mini_image product %></td>
+            <td class="sku"><%= product.sku rescue '' %></td>         
+            <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
+            <td><%= link_to product.buybid_seller.try(:name), edit_admin_product_seller_path(product) if product.buybid_seller.present? %></td>
+            <td class="text-center"><%= product.display_price.to_html rescue '' %></td>
+            <td class="buybid_visible"><%= button_link_to("", main_app.toggle_visible_admin_product_path(product, @list_type), class: button_style_product(:buybid_visible, product), icon: button_icon_product(:buybid_visible, product)) %> <%= product.buybid_position %></td>
+            <td class="buybid_popular"><%= button_link_to("", main_app.toggle_popular_admin_product_path(product, @list_type), class: button_style_product(:buybid_popular, product), icon: button_icon_product(:buybid_popular, product)) %></td>
+            <td class="updated-at text-center"><%= product.updated_at.strftime("%d-%m-%Y")%><br/>
+              <%= product.updated_at.strftime("%H:%M")%></td>
+            <td class="actions actions-3 text-left" data-hook="admin_products_index_row_actions">
+              <%= link_to_edit product, no_text: true, class: 'edit' if can?(:edit, product) && !product.deleted? %>
+              <%= link_to_delete product, no_text: true if can?(:delete, product) && !product.deleted? %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Product)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::Product) %>!
+  </div>
+<% end %>
+
+<span>
+  <h5 class="text-primary" style="font-style: italic;">
+    Total: <b><%= @collection.where.not(buybid_seller_id: nil).distinct.count(:buybid_seller_id) %></b>
+  </h5>
+</span>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>

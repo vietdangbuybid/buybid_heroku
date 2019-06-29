@@ -1,0 +1,31 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  host: 127.0.0.1
+  port: 3306
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: developments.buybid_jp
+  password: Password123@
+
+development:
+  <<: *default
+  database: developments_buybid_jp_dev
+
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: developments_buybid_jp_setup_test
+
+production:
+  <<: *default
+  adapter: postgresql
+  database: db/production.sqlite3
+  #host: <%= Rails.application.credentials.dig(:db, :host) %>
+  #port: <%= Rails.application.credentials.dig(:db, :port) %>
+  #username: <%= Rails.application.credentials.dig(:db, :user) %>
+  #password: <%= Rails.application.credentials.dig(:db, :pass) %>
+  #database: <%= Rails.application.credentials.dig(:db, :database) %>

@@ -1,0 +1,152 @@
+
+<% content_for :page_title do %>
+  <%= plural_resource_name(Buybid::Seller) + " / " + @list_type.capitalize if @list_type.present? %>
+<% end%>
+
+<% content_for :page_actions do%>
+  <%= button_link_to(Spree.t(:new_seller), "/admin/sellers/new/#{@list_type}" , {id: "new_admin_seller", class: "btn-success", icon: "add"})%>
+  <br/>
+<%end%>
+
+<%= render partial: "spree/admin/shared/index_table_options", locals: {collection: @sellers}%>
+
+<% content_for :table_filter do%>
+  <div data-hook="admin_seller_sidebar">
+  <%= search_form_for [:admin, @q], url: admin_sellers_path(@list_type), method: :get do |f| %>
+    <div data-hook = "admin_sellers_index_search" class = "row">
+
+        <!-- Name -->
+        <div class = "col-xs-12 col-md-12">
+          <div class = "form-group">
+            <%= f.label :name_cont, I18n.t('seller.name'), class: "form-title"%>
+            <%= f.text_field :name_cont, size: 15, class: "form-control js-quick-search-target js-filterable"%>
+          </div>
+        </div>
+          
+        <!-- Auction -->
+        <% if auction?(@list_type.chomp('s')) %>      
+          <div class = "col-xs-12 col-md-12">
+            <div class = "form-group">
+              <%= f.label :account_code, I18n.t('seller.account_code'), class: "form-title"%>
+              <%= f.text_field :account_code, size: 15 ,class: "form-control js-quick-search-target js-filterable", value: params[:q][:account_code] %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class = "col-xs-12 col-md-12" style="padding: 0">
+
+          <!-- Business -->
+          <div class = "form-group col-xs-3 col-md-3">
+            <%= f.label :business, 'business', class: "form-title"%>
+            <select class="form-control" onchange="window.location.href = this.value; return false;">
+              <option value="/admin/sellers/all" <%= "selected=selected" if all?(@list_type) %> >
+                All
+              </option>
+              <option value="/admin/sellers/auctions" <%= "selected=selected" if auction?(@list_type)%> >
+                Auction
+              </option>
+              <option value="/admin/sellers/shops" <%= "selected=selected" if shop?(@list_type) %> >
+                Shop
+              </option>
+              <option value="/admin/sellers/partners" <%= "selected=selected" if partner?(@list_type) %> >
+                Partner
+              </option>
+            </select>
+          </div>
+
+          <!-- Visible -->
+          <div class = "form-group col-xs-3 col-md-3">
+            <%= f.label :visible, I18n.t('seller.visible'), class: "form-title"%>
+            <%= f.select_tag :visible, ( options_for_select([
+                            ['All', 0], 
+                            ['Visible', 1], 
+                            ['Disable', 2]
+                          ], params[:q][:visible])), name: 'q[visible]',
+                          class: "form-control" %>
+          </div>
+
+          <!-- Popular -->
+          <div class = "form-group col-xs-3 col-md-3">
+            <%= f.label :popular, I18n.t('seller.popular'), class: "form-title"%>
+            <%= f.select_tag :popular, ( options_for_select([
+                            ['All', 0], 
+                            ['true', 1], 
+                            ['false', 2]
+                          ], params[:q][:popular])), name: 'q[popular]',
+                          class: "form-control" %>
+          </div>
+
+          <!-- Category -->
+          <div class = "form-group col-xs-3 col-md-3">
+            <%= f.label :main_category_id, 'Category', class: "form-title"%>
+            <%= f.select :id, options_from_collection_for_select(
+                            @seller.list_category, "id", "name", params[:q][:main_category_id]
+                          ), 
+                          { include_blank: true }, 
+                          { :class => 'form-control', 
+                            :name => 'q[main_category_id]'
+                          } %>
+          </div>
+
+        </div>
+      </div> 
+
+      <div data-hook="admin_sellers_index_search_buttons" class="form-actions seller_filter_search">
+        <%= button Spree.t(:search), 'search' %>
+      </div>
+  </div>
+  <%end%>
+<% end%>
+
+<span>
+  <h5 class="text-primary" style="font-style: italic;">
+    Total: <b><%= @sellers_count %></b>
+  </h5>
+</span>
+
+<%if @sellers.any?%>
+  <table class="table" id="listing-sellers">
+    <thead>
+      <tr data-hook="admin-class-seller-header">
+        <th><input type="checkbox" id="checkAll" onclick="toggle(this)"></th>
+        <th><%=I18n.t('seller.account_code') if auction?(@list_type) %></th>
+        <th><%= sort_link @q, :name, I18n.t('seller.name'), { default_order: "desc" } %></th>
+        <th><%=I18n.t('seller.category') %></th>
+        <th><%= sort_link @q, :position,I18n.t('seller.visible'), { default_order: "desc" } %></th>
+        <th><%=I18n.t('seller.popular') %></th>
+        <th style="text-align: center;"><%= sort_link @q, :created_at, { default_order: "desc" } %> </th>
+        <th><%=I18n.t('seller.actions.title') %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%seller_index = 1%>
+      <% @sellers.each do |seller|%>
+        <% if !seller.is_deleted?%>
+          <td><input type="checkbox" name="foo"></td>
+
+          <td class= "seller-account-code"> <%= seller.account_code if auction?(@list_type)%></td>
+          <td class="seller-name"> <%= link_to seller.name, edit_admin_seller_path(seller, @list_type), style: style_deleted(seller) %></td>
+          <td class="seller-category"> <%= show_category_name(seller) %> </td>
+          <td class="seller-visible"> <%= button_link_to("", toggle_visible_admin_seller_path(seller, @list_type), class: button_style(:visible, seller), icon: button_icon(:visible, seller)) %> <%= seller.position %> </td>
+          <td class="seller-popular"> <%= button_link_to("", toggle_popular_admin_seller_path(seller, @list_type), class: button_style(:popular, seller), icon: button_icon(:popular, seller)) %> </td>
+          <td class="seller-created_at">  <div style = "text-align: center"> <%= show_created_time(seller.created_at, "%d-%m-%Y")%> <br/> <%= show_created_time(seller.created_at, "%H:%M:%S")%> </div> </td>
+          <td class="actions actions-2 text-left" datahook="admin_sellers_index_row_actions">
+            <%= link_to_edit "Edit", url: edit_admin_seller_path(seller, @list_type), no_text:true%>
+            <%= button_link_to "", "/admin/sellers/#{seller.id}", method: :delete, class: button_style(:deleted), icon: button_icon(:deleted), data: {confirm: "Are you sure you want to delete seller #{seller.name}?"} %>
+          </td>
+          <% seller_index=seller_index+1 %>
+        </tr>
+        <%end%>
+      <%end%>
+  </tbody>
+  </table>
+<% end %>
+
+<span>
+  <h5 class="text-primary" style="font-style: italic;">
+    Total: <b><%= @sellers_count %></b>
+  </h5>
+</span>
+
+<%= render partial: "spree/admin/shared/index_table_options", locals: {collection: @sellers}%>

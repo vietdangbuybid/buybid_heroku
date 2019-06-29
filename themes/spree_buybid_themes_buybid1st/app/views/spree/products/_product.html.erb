@@ -1,0 +1,32 @@
+<% url = spree.product_path(product, taxon_id: taxon.try(:id)) %>
+<div id="product_<%= product.id %>" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+  <div class="panel panel-default">
+    <% cache(taxon.present? ? [I18n.locale, current_currency, taxon, product] : cache_key_for_product(product)) do %>
+      <%= link_to url, itemprop: "url" do %>
+      <%# <a href="/shop/products/DTMA001-1" title="Máy Ảnh Penta -  Second Hand Nhật Nội"> %>
+          <div class="product_image">
+              <div class="product_image-overlay"></div>
+              <div class="frontpage_square">
+                <%# image %>
+              </div>
+          </div>
+          <div class="product_seller">
+              <div class="product_seller-img">
+                  <%= image_tag "spree/frontend/sellers/buybidshop.png", class: "image-center", alt: "Buybid Shop" %>
+              </div>
+              <div class="product_seller-name"><%= product.buybid_seller[:name] %></div>
+          </div>
+          <div class="product_info">
+              <h6 class="product_name">
+                <%= content_tag(:span, truncate(product.name, length: 50), class: 'info', itemprop: "name", title: product.name) %>
+              </h6>
+              <div class="product_price">
+                  <%= display_price(product) %>
+                  <span class="product_price_vnd">374.640 VNĐ</span>
+              </div>
+          </div>
+      <%# </a> %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

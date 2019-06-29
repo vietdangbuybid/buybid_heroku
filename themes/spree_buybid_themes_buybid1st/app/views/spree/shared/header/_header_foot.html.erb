@@ -1,0 +1,58 @@
+<div class="h-foot">
+    <div class="container">
+        <div class="h-foot-menu desktop">
+            <i class="fa fa-list-ul"></i>Danh mục
+            <ul class="h-foot-menu-list">
+                <li>
+                    <%= link_to auction_url do %>
+                        <%= image_tag "#{public_statics_assets_root}/assets/images/icons/auction.png" %>Đấu giá
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to shop_url do %>
+                        <%= image_tag "#{public_statics_assets_root}/assets/images/icons/buybid.png" %>Mua hộ
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to partner_url do %>
+                        <%= image_tag "#{public_statics_assets_root}/assets/images/icons/partner.png" %>Đối tác
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to buybidshop_url do %>
+                        <%= image_tag "#{public_statics_assets_root}/assets/images/icons/buybidshop.png" %>Buybid Shop
+                    <% end %>
+                </li>
+            </ul>
+        </div>
+        <div class="whychoosebb">
+            <%= link_to "/support/service-fee", class: "item" do %>
+                <div class="whychoosebb-img-wrap">
+                    <%= image_tag "#{public_statics_assets_root}/assets/images/service-commit_1.png", class: "image-center service-fee" %>
+                </div>
+                <div class="whychoosebb-text-wrap">
+                    <span>Phí dịch vụ 6%</span>
+                    <strong>*Thời điểm hiện tại</strong>
+                </div>
+            <% end %>
+            <%= link_to "/support/service-flow", class: "item" do %>
+                <div class="whychoosebb-img-wrap">
+                    <%= image_tag "#{public_statics_assets_root}/assets/images/service-commit_3-60.png", class: "image-center" %>
+                </div>
+                <div class="whychoosebb-text-wrap">
+                    <span>Đặt hàng</span>
+                    <strong>Trong 60 phút</strong>
+                </div>
+            <% end %>
+            <%= link_to "/support/introduction", class: "item" do %>
+                <div class="whychoosebb-img-wrap">
+                    <%= image_tag "#{public_statics_assets_root}/assets/images/service-commit_4.png", class: "image-center" %>
+                </div>
+                <div class="whychoosebb-text-wrap">
+                    <span>Chuyên phục vụ</span>
+                    <strong>Thị trường Việt Nam</strong>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

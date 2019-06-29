@@ -1,0 +1,22 @@
+vi:
+  hello: "Hello World"
+  home: 
+    title:
+      auctions: Đấu giá
+      shops: Mua hộ
+      partners: Đối tác
+      store: Buybidshop
+    marquee:
+      auctions: "Hỗ trợ đấu giá trọn gói 24/7"
+      shops: "Từ tất cả các website của Nhật Bản"
+      partners: "Miễn phí dịch vụ"
+      store: "Cửa hàng của Buybid"
+    intro:
+      auctions: "Hỗ trợ đấu giá trọn gói 24/7"
+      shops: "Từ tất cả các website </br> của Nhật Bản"
+      partners: "An toàn tuyệt đối </br> Giá trị tốt nhất thị trường"
+      store: "Cửa hàng của Buybid" 
+    sec_right_title: "Seller thường giao dịch"
+    readmore: 'Xem thêm'
+
+    

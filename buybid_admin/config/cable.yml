@@ -1,0 +1,10 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: <%= "redis://#{Rails.application.credentials.dig(:redis, :host)}:#{Rails.application.credentials.dig(:redis, :port)}/1" %>
+  channel_prefix: buybid_admin_production

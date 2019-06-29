@@ -1,0 +1,16 @@
+<%= render partial: 'buybid/admin/shared/seller_tabs', locals: { current: :images } %>
+
+<%= content_for :page_title do %>
+  <%= Spree.t(:new_image) %>
+<% end %>
+
+<%= form_for [:buybid, :admin, @image], url: "/admin/sellers/#{@seller.id}/images", method: :post, html: { multipart: true } do |f| %>
+  <fieldset data-hook="new_image">
+    <%= render partial: 'form', locals: { f: f } %>
+
+    <div class="form-actions" data-hook="buttons", style = "width:220px">
+      <%= button 'create' , 'save', style: 'float: left'%>
+      <%= button_link_to I18n.t('seller.actions.cancel'), admin_seller_images_path(@seller), style: 'float: right', icon: 'cancel'%>
+    </div>
+  </fieldset>
+<% end %>

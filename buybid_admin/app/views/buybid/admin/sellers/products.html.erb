@@ -1,0 +1,41 @@
+<%= render partial: "buybid/admin/shared/seller_tabs", locals: {current: :products}  %>
+
+<%= content_for :page_title do %>
+  Products
+<% end %>
+
+
+<% if !@products.nil?%>
+  <table class="table" id="listing-sellers">
+    <thead>
+      <tr data-hook="admin-class-seller-header">
+        <th><%=I18n.t('seller.index') %></th>
+        <th><%=I18n.t('seller.account_code') if auction?(@list_type) %></th>
+        <th><%=I18n.t('seller.name') %></th>
+        <th><%=I18n.t('seller.logo') %></th>
+        <th><%=I18n.t('seller.category') %></th>
+        <th><%=I18n.t('seller.visible') %></th>
+        <th><%=I18n.t('seller.popular') %></th>
+        <th><%=I18n.t('seller.position') %></th>
+        <th><%=I18n.t('seller.actions.title') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% product_index = 1 %>
+        <% @products.each do |product| %>
+            <tr <%== "style='color: red;'" if product.deleted? %> id="<%= spree_dom_id product %>" data-hook="admin_products_index_rows" class="<%= cycle('odd', 'even') %>">
+              <td class="sku"><%= product.sku rescue '' %></td>
+              <td class="status"><%= available_status(product) %> </td>
+              <td class="image"><%= mini_image product %></td>
+              <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
+              <td class="text-center"><%= product.display_price.to_html rescue '' %></td>
+              <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
+                <%= link_to_edit product, no_text: true, class: 'edit' if can?(:edit, product) && !product.deleted? %>
+                <%= link_to_clone product, no_text: true, class: 'clone' if can?(:clone, product) %>
+                <%= link_to_delete product, no_text: true if can?(:delete, product) && !product.deleted? %>
+              </td>
+            </tr>
+        <%end%>
+    </tbody>
+  </table>
+<% end %>

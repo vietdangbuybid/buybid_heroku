@@ -1,0 +1,77 @@
+<%= render partial: 'buybid/admin/shared/seller_tabs', locals: {current: :contacts}%>
+
+<%= content_for :page_title do%>
+    Contacts
+<% end%>
+
+<%= content_for :page_actions do%>
+    <%= button_link_to I18n.t('seller.contact.new'), new_contact_admin_seller_path(@seller, @list_type), {class: 'btn btn-success', id: 'new-admin-seller-contact', icon: 'add'} %>
+<% end %>
+
+<%= content_for :table_filter do%>
+<% end%>
+
+
+<% content_for :listing_sellers_contact do %>
+<table class = 'table' id = 'listing-sellers-contact'>
+    <thead>
+        <tr data-hook = 'admin-class-seller-contacts-header'>
+            <th> <%= I18n.t('seller_contact.first_name') %> </th>
+            <th> <%= I18n.t('seller_contact.last_name') %> </th>
+            <th> <%= I18n.t('seller_contact.zip_code') %> </th>
+            <th> <%= I18n.t('seller_contact.address1') %> </th>
+            <th> <%= I18n.t('seller_contact.address2') %> </th>
+            <th> <%= I18n.t('seller_contact.city') %> </th>
+            <th> <%= I18n.t('seller_contact.country') %> </th>
+            <th> <%= I18n.t('seller_contact.state') %> </th>
+            <th> <%= I18n.t('seller_contact.phone') %> </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <%address_index = 1%>
+        <% @contacts.each do |contact| %>
+            <td class = "seller-contact-first-name"> <%=contact.firstname %> </td>
+            <td class = "seller-contact-last-name"> <%=contact.lastname %> </td>
+            <td class = "seller-contact-zip-code"> <%=contact.zipcode %> </td>
+            <td class = "seller-contact-address1"> <%=contact.address1 %> </td>
+            <td class = "seller-contact-address2"> <%=contact.address2 %> </td>
+            <td class = "seller-contact-city"> <%=contact.city %> </td>
+            <td class = "seller-contact-country"> <%=contact.country %> </td>
+            <td class = "seller-contact-state"> <%=contact.state %> </td>
+            <td class = "seller-contact-phone"> <%=contact.phone %> </td>
+            <td class="actions actions-2 text-left" datahook="admin_sellers_index_row_actions">
+            </td>
+        <% end%>
+    </tbody>
+</table>
+<%end%>
+
+
+<% contact_index = 1%>
+<% @contacts.each do |contact| %>
+    <div class="panel-group">
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse<%=contact_index%>"> <%=display_seller_contact_title(contact, contact_index)%></a>
+                </h4>
+            </div>
+
+            <div id="collapse<%=contact_index%>" class="panel-collapse collapse">
+                <%= form_for contact, url: update_contact_admin_seller_path(@seller, contact, @list_type), method: :patch do |f| %>
+                    <%= render partial: 'buybid/admin/shared/contact_form', locals: {f: f, contact: contact, seller_id: @seller.id} %>
+                    <div id = "button">
+                        <div class="text-center">
+                            <%= f.submit I18n.t('seller.actions.update'), method: :patch, class: 'btn btn-primary' %> OR
+                            <%= link_to I18n.t('seller.actions.delete'), destroy_contact_admin_seller_path(@seller,contact, @list_type), method: :delete, class: 'btn btn-danger', data: {confirm: I18n.t(:delete_message) + "#{contact.firstname} #{contact.lastname}"} %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <% contact_index = contact_index + 1 %>
+<% end %>

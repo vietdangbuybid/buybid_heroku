@@ -1,0 +1,116 @@
+<div class="h-head">
+    <div class="container">
+        <div class="h-head-fee">
+            <p class="h-head-exrate">
+                <small>Tỷ giá</small> <strong>1</strong> ¥
+                =
+                <strong class="exchange-rate">223</strong> VNĐ
+                <small class="exchange-rate-date-update">(11/04/2019)</small>
+            </p>
+            <p class="h-head-pvcqt">
+                <small>Vận chuyển quốc tế</small> =
+                <strong class="transport-fee">240.000</strong> VNĐ / kg
+            </p>
+        </div>
+        <ul class="h-head-menu desktop">
+            <li class="h-head-menu-item">
+                <button class="h-head-menu-link">
+                    <i class="icofont-search-document"></i>Tra cứu đơn hàng
+                </button>
+                <div class="pop-hover-open h-check-order">
+                    <div class="h-check-order-title">Tra cứu đơn hàng</div>
+                    <div class="h-check-order-content">
+                        <div class="h-check-order-content--desc"> Theo dõi đơn hàng bằng cách nhập Mã
+                            đơn
+                            và địa chỉ Email/Số điện thoại bên dưới. </div>
+                        <div class="h-check-order-content--login">
+                            Hoặc
+                            <%= link_to "Đăng nhập", "javascript:void(0);", class: "js-sign-in__popup" %>
+                            để truy cập trang Lịch sử đơn hàng.
+                        </div>
+                        <div class="h-check-order-content--form">
+                            <div class="h-check-order--code">
+                                <div>Mã đơn hàng <i class="far fa-question-circle"></i>
+                                    <div class="h-check-order-code--help"> Bạn có thể tìm thấy mã đơn
+                                        hàng trong SMS gửi tới số điện thoại đã đăng ký với Buybid hoặc
+                                        Email xác nhận đơn hàng của bạn </div>
+                                </div>
+                                <input class="form-control" id="orderCode" name="orderCode"
+                                    placeholder="Nhập mã đơn hàng">
+                            </div>
+                            <div class="h-check-order--code">
+                                <div>Email/Số điện thoại</div>
+                                <input class="form-control" id="emailOrPhone" name="emailOrPhone"
+                                    placeholder="Nhập Email hoặc Số điện thoại">
+                            </div>
+                            <div class="h-check-order--errtxt o-message-Error"></div>
+                            <div class="h-check-order--code o-js-Captcha-Show">
+                            </div>
+                            <button class="h-check-order--btn js-search-order">Tra cứu ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="h-head-menu-item">
+                <%= link_to "/news", class: "h-head-menu-link" do %>
+                    <i class='far fa-newspaper'></i>Tin tức
+                <% end %>
+            </li>
+            <li class="h-head-menu-item">
+                <button class="h-head-menu-link">
+                    Hỗ trợ <b>1900 7163</b>&nbsp;&nbsp;<span class="fa fa-caret-down"></span>
+                </button>
+                <div class="pop-hover-open h-support">
+                    <ul>
+                        <li class="hotline_group">
+                            <div class="h-hotline-area">
+                                <%= link_to "tel:19007163", class: "h-hotline" do %>
+                                    <div class="h-hotline-ico">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="h-hotline-text">
+                                        <div>Hotline</div>
+                                        <b>1900 7163</b>
+                                        <span>8h30 - 17h30 (T2 - T7)</span>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="child-link">
+                        <li>
+                            <%= link_to "/" do %>
+                                Câu hỏi thường gặp
+                                <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to "/" do %>
+                                Hướng dẫn mua hàng
+                                <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to "/" do %>
+                                Chính sách thanh toán
+                                <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to "/" do %>
+                                Chính sách giao hàng
+                                <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to "/" do %>
+                                Liên hệ Buybid
+                                <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

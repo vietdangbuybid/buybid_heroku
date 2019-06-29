@@ -1,0 +1,275 @@
+<main id="main-content">
+           <div class="container">
+               <div class="breadcrumb-wrap">
+                   <ul class="breadcrumb">
+                       <li><a href="/"><span>Trang chủ</span></a></li>
+                       <li><a href="/order"><span>Tìm kiếm</span></a></li>
+                       <li><a><span>Dụng cụ thể thao</span></a></li>
+                   </ul>
+               </div>
+               <section id="seller" class="sec-page">
+                    <%= render partial: "search/filters/menu", locals: {categories: @categories, brands: @brands } %>
+                       <div class="sec-right">
+                           <div class="sec-cat-detail-area">
+                               <div class="sec-right-head">
+                                   <h1 class="search-keyword-area">
+                                       Tìm kiếm "Dụng cụ thể thao"
+                                   </h1>
+                                   <div class="row">
+                                       <div class="col-sm-6">
+                                           <div class="search-result-area">
+                                               Tìm thấy <b>5,789</b> kết quả
+                                           </div>
+                                       </div>
+                                       <div class="col-sm-6">
+                                           <div class="sort-area">
+                                               <div class="type-list pull-right">
+                                                   <a href="#" class="btn btn-default btn-gallery-view active" title="Gallery View" data-toggle="tooltip"
+                                                   data-placement="top">
+                                                       <span class="fa fa-th"></span>
+                                                   </a>
+                                                   <a href="#" class="btn btn-default btn-list-view" title="List View" data-toggle="tooltip"
+                                                   data-placement="top">
+                                                           <span class="fa fa-th-list"></span>
+                                                       </a>
+                                               </div>
+                                               <div class="sort-list dropdown bb-ddl pull-right">
+                                                   <input type="hidden" class="data-value sort-value" name="sort-value" value="0">
+                                                   <span>Sắp xếp:</span>
+                                                   <a class="btn btn-default dropdown-toggle bb-ddl-btn sort-btn"
+                                                       data-toggle="dropdown" >
+                                                       <i class="fa fa-sort-alpha-down"></i>
+                                                       <span class="data-text sort-value">Độ phổ biến</span>
+                                                   </a>
+                                                   <ul class="dropdown-menu bb-ddl-list">
+                                                       <li><a class="item" href="#" data-value="popular">Độ phổ biến</a></li>
+                                                       <li><a class="item" href="#" data-value="price_asc">Giá tăng dần</a>
+                                                       </li>
+                                                       <li><a class="item" href="#" data-value="price_desc">Giá giảm dần</a>
+                                                       </li>
+                                                       <li><a class="item" href="#" data-value="discontinue_on_asc">Theo thời điểm kết
+                                                               thúc (tăng dần)</a></li>
+                                                       <li><a class="item" href="#" data-value="discontinue_on_desc">Theo thời điểm kết
+                                                               thúc (giảm dần)</a></li>
+                                                       <li><a class="item" href="#" data-value="bids_asc">Số lần bids (tăng
+                                                               dần)</a></li>
+                                                       <li><a class="item" href="#" data-value="bids_desc">Số lần bids (giảm
+                                                               dần)</a></li>
+                                                   </ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+<!----------------------------------------------Search results tag section----------------------------------------->
+                                   <div class="row">
+                                       <div class="col-sm-12">
+                                           <div class="tags-area">
+                                               <div class="tags-clear">
+                                                   <a href="#" class="btn btn-default btn-xs tags-remove-all" onclick="BuybidSearch.remove_all_tags()">Xóa tất cả</a>
+                                               </div>
+                                                    <div class="tags-list">
+                                                      <span class="tags-title">Sản phẩm chọn theo:</span>
+                                                        <%@tags.each do |tag_key, tag_val|%>
+                                                            <a href="#" class="btn btn-primary btn-xs tags-item"
+                                                                title="Loại bỏ <%=format_filtered_tag(tag_val)%>" data-toggle="tooltip"
+                                                                data-placement="top">
+                                                                <%=format_filtered_tag(tag_val)%><i class="fa fa-times" onclick="BuybidSearch.remove_tag('<%=tag_key%>')"></i>
+                                                            </a>
+                                                        <% end %>
+                                                    </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+
+<!--------------------------------------------------Products Grid API------------------------------>
+                               <div class="sec-right-body">
+                                    <div class='product-grid api-streamer'
+                                            stream-order=1
+                                            stream-type='product-grid'
+                                            stream-trends=''
+                                            stream-api= <%="/api/v1/products?#{@search_params_to_s}&page=1&per_page=9"%>>
+                                    </div>
+    <!--------------------------------------------------------------------------------------------->
+                                    <div class="sec-pagination">
+                                            <nav>
+                                                <ul class="pagination pagination-circle pg-blue">
+                                                    <li class="page-item disabled"><a class="page-link">First</a></li>
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="page-item active"><a class="page-link">1</a></li>
+                                                    <li class="page-item"><a class="page-link">2</a></li>
+                                                    <li class="page-item"><a class="page-link">3</a></li>
+                                                    <li class="page-item"><a class="page-link">4</a></li>
+                                                    <li class="page-item"><a class="page-link">5</a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link">Last</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                               </div>
+
+<!---------------------------------------Hashtags slider section------------------------------------------->
+                     <div class="sec-right-body">
+                                    <div class="hastags-slider">
+
+                                        <div class="owl-carousel owl-theme hastags-carousel">
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Thuốc" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/8053672910780_shad_qt_20190222051235PM.jpg", alt:"#VietDang" %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Thuốc</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Áo lót" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/16_20190313100741AM.jpg", alt: "#Áo lót"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Áo lót</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Tai nghe" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/7_20190306105641AM.jpg", alt: "#Tai nghe"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Tai nghe</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Túi thể thao" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/túi 1_20190225042121PM.png", alt: "#Túi thể thao"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Túi thể thao</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Mắt kính" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/57_400521_20190312024940PM.jpg", alt: "#Mắt kính"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Mắt kính</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Đồng hồ" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <img src="assets/images/products/dw-petite-28-bristol-black-s-cat_20190222042746PM.jpg"
+                                                                alt="#Đồng hồ">
+                                                        <%= image_tag "#{public_statics_assets_root}/assets/images/products/dw-petite-28-bristol-black-s-cat_20190222042746PM.jpg", alt: "#Mắt kính"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Đồng hồ</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Mắt kính" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/8053672910780_shad_qt_20190222051235PM.jpg", alt: "#Mắt kính"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Mắt kính</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Túi thể thao" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                           <%= image_tag "#{public_statics_assets_root}/assets/images/products/túi 1_20190225042121PM.png", alt: "#Túi thể thao"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Túi thể thao</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Áo lót" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                        <%= image_tag "#{public_statics_assets_root}/assets/images/products/2_20190222044441PM.jpg", alt: "#Áo lót thao"%>
+                                                           </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Áo lót</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Thuốc" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                            <%= image_tag "#{public_statics_assets_root}/assets/images/products/6_20190222035852PM.jpg", alt: "#Thuốc"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Thuốc</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Đồng hồ" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                        <div class="seller-logo">
+                                                           <%= image_tag "#{public_statics_assets_root}/assets/images/products/dw-petite-28-bristol-black-s-cat_20190222042746PM.jpg", alt: "#Đồng hồ"%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Đồng hồ</div>
+                                                </a>
+                                            </div>
+
+                                            <div class="seller-logo-item hastags-item">
+                                                <a href="#" title="#Tai nghe" class="seller-logo-link">
+                                                    <div class="frontpage_square">
+                                                      <div class="seller-logo">
+                                                         <%= image_tag "#{public_statics_assets_root}/assets/images/products/27.2dg_20190227032129PM.jpg", alt: "#Tai nghe"%>
+                                                      </div>
+                                                    </div>
+                                                    <div class="product_seller-name">#Tai nghe</div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                  
+<!---------------------------------------End of slider------------------------------------------->
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </section>
+           </div>
+           </main>

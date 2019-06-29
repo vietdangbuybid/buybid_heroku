@@ -1,0 +1,99 @@
+<%= content_for :page_title do%>
+  <%=link_to plural_resource_name(Buybid::Seller), admin_sellers_path%> / <%= @seller.name %>/ New Contact
+<% end %>
+
+<%= form_for @contact, url: create_contact_admin_seller_path(@seller), method: :post  , html: { multipart: true } do |f| %>
+<div class = 'admin-seller-new-contact-form'>
+
+<div data-hook = "admin-seller-first-half" class = "col-xs-14 col-md-6">
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :firstname, class: ['form-group'] do %>
+      <%= f.label :firstname, I18n.t('seller.contact.first_name') %>
+      <%= f.text_field :firstname, class: 'form-control title' %>
+      <%= f.error_message_on :name %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :lastname, class: ['form-group'] do %>
+      <%= f.label :lastname, I18n.t('seller.contact.last_name') %>
+      <%= f.text_field :lastname, class: 'form-control title' %>
+      <%= f.error_message_on :lastname %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :address1, class: ['form-group'] do %>
+      <%= f.label :address1, I18n.t('seller.contact.address1') %>
+      <%= f.text_field :address1, class: 'form-control title'%>
+      <%= f.error_message_on :address1 %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :address2, class: ['form-group'] do %>
+      <%= f.label :address2, I18n.t('seller.contact.address2')%>
+      <%= f.text_field :address2, class: 'form-control title'%>
+      <%= f.error_message_on :address2 %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :city, class: ['form-group'] do %>
+      <%= f.label :city, I18n.t('seller.contact.city') %>
+      <%= f.text_field :city, class: 'form-control title' %>
+      <%= f.error_message_on :city %>
+    <% end %>
+  </fieldset>
+</div>
+
+
+<div data-hook = "admin-seller-second-half" class = "col-xs-14 col-md-6">
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :zipcode, class: ['form-group'] do %>
+      <%= f.label :zipcode, I18n.t('seller.contact.zip_code') %>
+      <%= f.text_field :zipcode, class: 'form-control title'%>
+      <%= f.error_message_on :zipcode %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :phone, class: ['form-group'] do %>
+      <%= f.label :phone, I18n.t('seller.contact.phone') %>
+      <%= f.text_field :phone, class: 'form-control title'%>
+      <%= f.error_message_on :phone %>
+    <% end %>
+  </fieldset>
+
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :alternative_phone, class: ['form-group'] do %>
+      <%= f.label :alternative_phone, I18n.t('seller.contact.alternative_phone') %>
+      <%= f.text_field :alternative_phone, class: 'form-control title'%>
+      <%= f.error_message_on :alternative_phone %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :country_name, class: ['form-group'] do %>
+      <%= f.label :country_name, I18n.t('seller.contact.country') %>
+      <%= f.text_field :country_name, value: "Japan", placeholder: "Japan", readonly: true%>
+      <%= f.error_message_on :country_name %>
+    <% end %>
+  </fieldset>
+
+  <fieldset data-hook="new_contact_attrs">
+    <%= f.field_container :country_id, class: ['form-group'] do %>
+      <%= f.label :province_name, I18n.t('seller.contact.province_name') %> <span class="required">*</span>
+      <%= f.collection_select :state_id, available_provinces, :id, :name, {}, {class: 'select1', style: 'block'} %>
+      <%= f.error_message_on :state_id %>
+    <% end %>
+  </fieldset>
+</div>
+</div>
+
+<div class = 'admin-create-button', style = 'col-md-10 text-center'>
+  <%= f.submit "Create Address", class: 'btn btn-primary btn-success'%>
+  <%= button_link_to "Back", contacts_admin_seller_path(@seller), method: :get, class: 'btn btn-primary btn-cancel' %>
+</div>
+<% end %>

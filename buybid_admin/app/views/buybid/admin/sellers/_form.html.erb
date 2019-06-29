@@ -1,0 +1,236 @@
+<div data-hook = "admin_seller_rating_and_evaluation_form">
+    <div class = 'row'>
+        <div class = "seller-form col-xs-12 col-md-8" data-hook = "admin_seller_edit_left">
+
+            <div class="row">
+                <div class="col-xs-7">
+                    <div data-hook = "admin_seller_form_name">
+                        <%= f.field_container :name, class: ['form-group'] do%>
+                            <%= f.label :name, raw(I18n.t('seller.name') + content_tag(:span, ' *', class: 'required')) %> 
+                            <%= f.text_field :name, value: @seller.name, class: 'form-control title' %>
+                            <%= f.error_message_on :name%>
+                        <%end%>
+                    </div>
+                    
+                    <div data-hook = "admin_seller_form_url">
+                        <%= f.field_container :URL, class: ['form-group'] do%>
+                            <%= f.label :URL, raw(I18n.t('seller.URL') + content_tag(:span, ' *', class: 'required'))%>
+                            <%= f.text_field :URL, value: @seller.URL, class: 'form-control title' %>
+                            <%= f.error_message_on :URL%>
+                        <%end%>
+                    </div>             
+                </div>
+                
+                <div class="col-xs-5">
+                    <div data-hook = "admin_seller_form_phone_number">
+                        <%= f.field_container :phone_number, class: ['form-group'] do%>
+                            <%= f.label :phone_number%>
+                            <%= f.text_field :phone_number, value: @seller.phone_number, class: 'form-control title' %>
+                            <%= f.error_message_on :phone_number%>
+                        <% end %>
+                    </div>
+
+                    <div data-hook = "admin_seller_form_url">
+                        <%= f.field_container :account_code, class: ['form-group'] do%>
+                            <%= f.label :account_code%>
+                            <%= f.text_field :account_code, value: @seller.account_code, class: 'form-control title' %>
+                            <%= f.error_message_on :account_code%>
+                        <%end%>
+                    </div> 
+                </div>
+            </div>
+
+
+            <div data-hook = "admin_seller_form_description">
+                <%= f.field_container :description, class: ['form-group'] do%>
+                    <%= f.label :description%>
+                    <%= f.text_area :description, value: @seller.description, class: 'form-control title' %>
+                    <%= f.error_message_on :description%>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_contact">
+                <%= f.field_container :contact, class: ['form-group'] do%>
+                    <%= f.label :contact %>
+                    <%= f.text_area :address, value: @seller.address, class: 'form-control title' %>
+                    <%= f.error_message_on :address%>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_meta_keywords">
+                <%= f.field_container :meta_keywords, class: ['form-group'] do %>
+                    <%= f.label :meta_keywords, I18n.t('seller.meta_keywords')%>
+                    <%= f.text_field :meta_keywords, value: @seller.meta_keywords, class: "form-control" %>
+                    <%= f.error_message_on :meta_keywords%>
+                <% end %>
+            </div>
+            
+            <div data-hook = "admin_seller_form_meta_title">
+                <%= f.field_container :meta_title, class: ['form-group'] do %>
+                    <%= f.label :meta_title, I18n.t('seller.meta_title')%>
+                    <%= f.text_field :meta_title, value: @seller.meta_title ,class: "form-control" %>
+                    <%= f.error_message_on :meta_title%>
+                <% end %>
+            </div>
+
+            <div data-hook = "admin_seller_form_meta_description">
+                <%= f.field_container :meta_description, class: ['form-group'] do %>
+                    <%= f.label :meta_description, I18n.t('seller.meta_description')%>
+                    <%= f.text_field :meta_description, value: @seller.meta_description, class: "form-control" %>
+                    <%= f.error_message_on :meta_description%>
+                <% end %>
+            </div>
+        </div>
+
+        <div class = "form col-xs-12 col-md-4" data-hook = "edit-seller-right-form">
+            <div data-hook="admin_product_logo">
+                <%= f.label :attachment, class:"box__input box__input_logo" do %>
+                  <div class="box_preview box_preview_logo">
+                    <% if @seller.spree_images[0].present? %>
+                      <span style="margin: 0 auto;">
+                        <%= image_tag(main_app.url_for(@seller.spree_image.url(:large))) %>
+                      </span>
+                    <% else %>
+                      <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"/></svg>
+                    <% end %>
+                  </div>
+
+                  <div class="files_label text-center">
+                    <strong>Logo</strong>
+                  </div>
+                  
+                  <%= f.file_field :attachment, class:"box__file files_input", multiple: false, accept: "image/png" %>
+                <% end %>
+              </div>
+
+            <div data-hook = "admin_seller_form_main_category_taxons">
+                <%= f.field_container :main_category, class: ['form-group'] do %>
+                    <% if true %>
+                        <%= f.label :main_Category_id, raw(I18n.t('seller.main_category') + content_tag(:span, ' *', class: 'required'))%>
+                        <%= f.hidden_field :main_category_id, id: :seller_main_category_taxon_id ,value: @seller.main_category_id, taxonomy_id: Spree::Taxonomy.where({name: "Categories"}).first.id, placeholder: I18n.t('seller.main_category') %>
+                    <% elsif @seller.main_category_id.present? %>
+                        <%= f.label :main_category_id, I18n.t('seller.main_category')%>
+                        <ul class = 'text-list'>
+                            <% @seller.main_category.name %>
+                        </ul>
+                    <% end %>
+                <% end %>
+            </div>
+
+            <div data-hook = "admin_seller_form_category_taxons">
+                <%= f.field_container :categories, class: ['form-group'] do%>
+                    <% if true %> 
+                        <%= f.label :category_taxon_ids, Spree.t(:categories)%>
+                        <%= f.hidden_field :category_taxon_ids, id: :seller_category_taxon_ids, value: @seller.category_taxon_ids.join(','), taxonomy_id: Spree::Taxonomy.where({name: 'Categories'}).first.id, placeholder: Spree.t(:categories) %>
+                    <% elsif @seller.categories.any? %>
+                        <%= f.label :category_taxon_ids, Spree.t(:categories)%>
+                        <ul class = 'text-list'>
+                            <% @seller.categories.each do |category|%>
+                                <li> <%= category.name %></li>
+                            <% end %>
+                        </ul>
+                    <% else %>
+                        <%= f.label :category_taxon_ids, Spree.t(:categories)%>
+                        <div class = "alert alert-info"> <%=Spree.t(:no_resource_found, resource: :category)%> </div>
+                    <%end%>
+
+                <% end %>
+            </div>
+
+            <div data-hook = "admin_seller_type_form">
+                <%= f.label :business, Spree.t(:business) %>
+                <%= f.field_container :seller_type, class: ["form-group"], style: 'border: 1px solid #e0e0e0; padding: 8px 16px;' do %>
+                    <span id = "auction-field", style = "padding-right: 30px" >
+                        <%= f.check_box :auction, checked: @seller.auction?, style: "padding-right: 30px; width: 20px; height: 20px"%>
+                        <%= f.label :auction%>
+                        <%= f.error_message_on :auction%>
+                    </span>
+
+                    <span id = "shop-field", style = "padding-right: 30px">
+                        <%= f.check_box :shop, checked: @seller.shop?, style:"padding-right: 30px; width: 20px; height: 20px "%>
+                        <%= f.label :shop%>
+                        <%= f.error_message_on :shop%>
+                    </span>
+
+                    <span id = "partner-field", style = "padding-right: 30px">
+                        <%= f.check_box :partner, checked: @seller.partner?, style: "padding-right: 30px; width: 20px; height: 20px"%>
+                        <%= f.label :partner%>
+                        <%= f.error_message_on :partner%>
+                    </span>
+                <% end %> 
+            </div>
+
+                <%= f.field_container :visible_and_popular, class: ['form-group'], style: 'border: 1px solid #e0e0e0; padding: 8px 16px;' do %>
+                    <span id = "visible" style = "padding-right: 35px">
+                    <%= f.check_box :visible, checked: @seller.visible?, style: "width: 20px; height: 20px"%>
+                    <%= f.label :visible, I18n.t('seller.visible')%>
+                    <%= f.error_message_on :visible %>
+                    </span>
+
+                    <span id = "popular" style = "padding-right: 35px">
+                    <%= f.check_box :popular, checked: @seller.popular?, style: "width: 20px; height: 20px"%>
+                    <%= f.label :popular, I18n.t('seller.popular')%>
+                    <%= f.error_message_on :popular %>
+                    </span>
+                <% end %>
+
+            <div data-hook = "admin_seller_position_form">
+                <%= f.field_container :position, class: ['form-group'] do%>
+                    <%= f.label :position, raw(I18n.t('seller.position') + content_tag(:span, ' *', class: 'required'))%>
+                    <%= f.text_field :position, value: @position, class: 'form-control title', required: true %>
+                    <%= f.error_message_on :position%>
+                <%end%>
+            </div>
+
+            <div data-hook = "admin_seller_form_order_count">
+                <%= f.field_container :order_count, class: ['form-group'] do%>
+                    <%= f.label :order_count, raw(I18n.t('seller.order_count')) %>
+                    <%= f.text_field :order_count, value: @order_count, class: 'form-control title' %>
+                    <%= f.error_message_on :order_count%>
+                <%end%>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function () {
+  const box_logo = document.querySelector('.box__input_logo');
+
+  BuybidAdmin.Utils.register_drag_drop_images(box_logo, show_seller_logo, valid_seller_images);
+
+  function valid_seller_images(files) {
+    return Array.from(files)
+      .every(file => {
+        if (file.type === 'image/png' && file.size <= BuybidAdmin.FILE_SIZE_LIMIT) {
+          return true;
+        } else {
+          alert(`Invalid file: ${file.name}\nSize: ${file.size}\nType: ${file.type}`);
+          return false;
+        }
+      });
+  }
+
+  function show_seller_logo(files) {
+    let box_preview_logo = document.querySelector('.box_preview_logo');
+    let file = files[0];
+
+    if (file) {
+      let reader  = new FileReader();
+
+      reader.addEventListener("load", function () {
+        box_preview_logo.innerHTML = `
+          <span style="margin: 0 auto;">
+            <img src="${reader.result}" alt="${file.name}">
+          </span>
+        `;
+      }, false);
+
+      reader.readAsDataURL(files[0]);
+    }
+  }
+})
+</script>
+

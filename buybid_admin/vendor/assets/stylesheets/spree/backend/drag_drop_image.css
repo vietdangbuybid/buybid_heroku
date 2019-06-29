@@ -1,0 +1,147 @@
+
+/* Drag & drop image*/
+.files_container {
+  width: 100%;
+  max-width: 560px;
+  /* 800 */
+  text-align: center;
+  margin: 0 auto;
+}
+
+.box__input {
+  font-size: 16px;
+  /* 20 */
+  position: relative;
+  padding: 36px 20px;
+  display: block;
+}
+
+.box__input .files_label {
+  font-size: 16px;
+}
+
+.box__input.has-advanced-upload {
+  outline: 2px dashed #92b0b3;
+
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+}
+
+.box__input.is-dragover {
+  outline-offset: -20px;
+  outline-color: #c8dadf;
+  background-color: #fff;
+}
+
+.box__dragndrop,
+.box__icon {
+  display: none;
+}
+
+.box__input.has-advanced-upload .box__dragndrop {
+  display: inline;
+}
+
+.box__input.has-advanced-upload .box__icon {
+  width: 100%;
+  height: 80px;
+  fill: #92b0b3;
+  display: block;
+  margin-bottom: 40px;
+}
+
+
+@-webkit-keyframes appear-from-inside {
+  from {
+    -webkit-transform: translateY(-50%) scale(0);
+  }
+
+  75% {
+    -webkit-transform: translateY(-50%) scale(1.1);
+  }
+
+  to {
+    -webkit-transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes appear-from-inside {
+  from {
+    transform: translateY(-50%) scale(0);
+  }
+
+  75% {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  to {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.box__restart {
+  font-weight: 700;
+}
+
+.box__restart:focus,
+.box__restart:hover {
+  color: #39bfd3;
+}
+
+.box__input .box__file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.box__input .box__file+label {
+  max-width: 80%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.box__input .box__file+label:hover strong,
+.box__file:focus+label strong,
+.box__file.has-focus+label strong {
+  color: #39bfd3;
+}
+
+.box__input .box__file:focus+label,
+.box__input .box__file.has-focus+label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.box_preview {
+  outline: 2px dashed #92b0b3;
+  display: none;
+}
+
+.box_preview_logo {
+  outline: none;
+  display: flex;
+}
+
+.box_preview_logo img {
+  margin: 0 auto;
+  width: 256px;
+  margin-bottom: 24px;
+}
+
+.frontpage_square {
+  border-top: 2px solid #eee;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.frontpage_square img {
+  width: 64px;
+  margin: 12px;
+}
+/* Drag & drop image*/

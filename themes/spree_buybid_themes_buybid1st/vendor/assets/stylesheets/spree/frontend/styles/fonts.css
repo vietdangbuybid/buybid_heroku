@@ -1,0 +1,96 @@
+﻿@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/font-web/Lato-Regular.eot');
+  src: url('../fonts/font-web/Lato-Regular.woff') format('woff'),
+       url('../fonts/font-web/Lato-Regular.ttf') format('truetype'),
+       url('../fonts/font-web/Lato-Regular.svg#Lato-Regular') format('svg'),
+       url('../fonts/font-web/Lato-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/font-web/Lato-Bold.eot');
+  src: url('../fonts/font-web/Lato-Bold.woff') format('woff'),
+       url('../fonts/font-web/Lato-Bold.ttf') format('truetype'),
+       url('../fonts/font-web/Lato-Bold.svg#Lato-Bold') format('svg'),
+       url('../fonts/font-web/Lato-Bold.eot?#iefix') format('embedded-opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/font-web/Lato-Heavy.eot');
+  src: url('../fonts/font-web/Lato-Heavy.woff') format('woff'),
+       url('../fonts/font-web/Lato-Heavy.ttf') format('truetype'),
+       url('../fonts/font-web/Lato-Heavy.svg#Lato-Heavy') format('svg'),
+       url('../fonts/font-web/Lato-Heavy.eot?#iefix') format('embedded-opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/font-web/Lato-Light.eot');
+  src: url('../fonts/font-web/Lato-Light.woff') format('woff'),
+       url('../fonts/font-web/Lato-Light.ttf') format('truetype'),
+       url('../fonts/font-web/Lato-Light.svg#Lato-Light') format('svg'),
+       url('../fonts/font-web/Lato-Light.eot?#iefix') format('embedded-opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/font-web/Lato-Medium.eot');
+  src: url('../fonts/font-web/Lato-Medium.woff') format('woff'),
+       url('../fonts/font-web/Lato-Medium.ttf') format('truetype'),
+       url('../fonts/font-web/Lato-Medium.svg#Lato-Medium') format('svg'),
+       url('../fonts/font-web/Lato-Medium.eot?#iefix') format('embedded-opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/font-web/Lato-ThinItalic.eot');
+  src: url('../fonts/font-web/Lato-ThinItalic.woff') format('woff'),
+       url('../fonts/font-web/Lato-ThinItalic.ttf') format('truetype'),
+       url('../fonts/font-web/Lato-ThinItalic.svg#Lato-ThinItalic') format('svg'),
+       url('../fonts/font-web/Lato-ThinItalic.eot?#iefix') format('embedded-opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'KozGoPr6N-Regular-AlphaNum';
+  src: url('../fonts/font-web/KozGoPr6N-Regular-AlphaNum.eot');
+  src: url('../fonts/font-web/KozGoPr6N-Regular-AlphaNum.woff') format('woff'),
+       url('../fonts/font-web/KozGoPr6N-Regular-AlphaNum.ttf') format('truetype'),
+       url('../fonts/font-web/KozGoPr6N-Regular-AlphaNum.svg#KozGoPr6N-Regular-AlphaNum') format('svg'),
+       url('../fonts/font-web/KozGoPr6N-Regular-AlphaNum.eot?#iefix') format('embedded-opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyriadPro-Regular';
+  src: url('../fonts/font-web/MyriadPro-Regular.eot');
+  src: url('../fonts/font-web/MyriadPro-Regular.woff') format('woff'),
+       url('../fonts/font-web/MyriadPro-Regular.ttf') format('truetype'),
+       url('../fonts/font-web/MyriadPro-Regular.svg#MyriadPro-Regular') format('svg'),
+       url('../fonts/font-web/MyriadPro-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'UTM Androgyne';
+    src: url('../fonts/font-web/UTM Androgyne.ttf');
+    src: url('../fonts/font-web/UTM Androgyne.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,47 @@
+<% if false%>
+<% # This images views can be used only for sellers%>
+<%end%>
+<%= render partial: 'buybid/admin/shared/seller_tabs', locals: { current: :images }%>
+
+<%= form_for [:admin, @image], url: "/admin/sellers/#{@seller.id}/images/#{@image.id}", method: :put, html: { multipart: true } do |f| %>
+      <h1 class="panel-title">
+        <%= @image.attachment_file_name%>
+      </h1>
+    <div class = 'row'>
+      <div class="form-group col-xs-12 col-md-6">
+        <div data-hook="logo" class="form-group">
+          <div class = "fit-image">
+            <%= f.label I18n.t('seller.image.thumbnail'), class: 'title' %>
+            <br/>
+            <%= link_to image_tag(main_app.url_for(@image.url(:small))), main_app.url_for(@image.url(:product)), class: 'fit-image' 'form-control' %>
+          </div>
+        </div>
+
+        <div data-hook="file" class="form-group">
+          <%= f.label I18n.t('seller.image.new_logo'), class: 'title' %>
+          <%= f.file_field :attachment %>
+        </div>
+
+        <div data-hook="file-name" class="form-group">
+          <%= f.label I18n.t('seller.image.file_name') %>
+          <%= f.text_field :attachment_file_name, class: 'form-control title'%>
+        </div>
+      </div>
+
+       <div class= "form-group col-xs-12 col-md-6"> 
+          <div data-hook="file-name" class="form-group">
+            <%= f.label I18n.t('seller.image.description') %>
+            <%= f.text_area :description, rows: 8, class: 'form-control'%>
+          </div>
+        </div>
+
+        <div class="form-actions", data-hook="buttons", style = "width: 200px">
+          <div style = "float:left; width: 100px">
+            <%= f.submit "Update", class: "btn btn-success", icon: "add" %>
+          </div>
+          <div style = "float:right; width:100px">
+            <%= button_link_to I18n.t('seller.actions.cancel'), admin_seller_images_path(@seller), class: "btn btn-danger", id: 'cancel_link', icon: 'delete' %>
+          </div>
+        </div>
+      </div>
+<% end %>
