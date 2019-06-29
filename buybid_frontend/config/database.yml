@@ -24,6 +24,7 @@ production:
   <<: *default
   adapter: postgresql
   database: db/production.sqlite3
+  #username: vietdangbuybid
   #host: <%= Rails.application.credentials.dig(:db, :host) %>
   #port: <%= Rails.application.credentials.dig(:db, :port) %>
   #username: <%= Rails.application.credentials.dig(:db, :user) %>

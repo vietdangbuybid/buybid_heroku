@@ -3,7 +3,7 @@ require_relative '../buybid_common/lib/buybid_common/variants'
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.3'
 
 gem 'rails', BuybidCommon::RAILS_VERSION
 gem 'sass-rails', '~> 5.0'
