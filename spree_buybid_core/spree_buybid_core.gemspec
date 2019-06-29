@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.version     = SpreeBuybidCore.version
   s.summary     = "A product of #{BuybidCommon::PRODUCT_COMPANY}"
 
-  s.author    = ['Thuc Nguyen']
-  s.email     = ['thuc.nguyen@betterlifejp.com']
+  s.author    = ['Viet Dang']
+  s.email     = ['vietdangbuybid@gmail.com']
   s.homepage  = BuybidCommon::PRODUCT_SITE
   s.license   = BuybidCommon::PRODUCT_LICENSE
 
@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mysql2'
   s.add_dependency 'spree_extension', BuybidCommon::SPREE_EXTENSION
   # Those gems are used for deploying this app to heroku
-  s.add_dependency 'sqlite3'
+  #s.add_dependency 'sqlite3'
   s.add_dependency 'pg'
   s.add_dependency 'rails_12factor'
 
