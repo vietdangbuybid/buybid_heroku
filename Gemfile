@@ -1,4 +1,4 @@
-require_relative '../buybid_common/lib/buybid_common/variants'
+require_relative 'buybid_common/lib/buybid_common/variants'
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -20,11 +20,11 @@ gem 'redis'
 gem 'hiredis'
 
 # buybid framework
-gem 'buybid_common', path: '../buybid_common'
-gem 'buybid_fetch', path: '../buybid_fetch'
-gem 'spree_buybid_core', path: '../spree_buybid_core'
-gem 'spree_buybid_api', path: '../spree_buybid_api'
-gem 'spree_buybid_themes_buybid1st', path: '../themes/spree_buybid_themes_buybid1st'
+gem 'buybid_common', path: 'buybid_common'
+gem 'buybid_fetch', path: 'buybid_fetch'
+gem 'spree_buybid_core', path: 'spree_buybid_core'
+gem 'spree_buybid_api', path: 'spree_buybid_api'
+gem 'spree_buybid_themes_buybid1st', path: 'themes/spree_buybid_themes_buybid1st'
 
 # spree framework
 gem 'spree_core', BuybidCommon::SPREE_VERSION
