@@ -53,7 +53,6 @@ PATH
       rails_12factor
       spree_core (= 3.7.0)
       spree_extension (= 0.0.9)
-      sqlite3
 
 PATH
   remote: themes/spree_buybid_themes_buybid1st
@@ -467,7 +466,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.1)
     state_machines (0.5.0)
     state_machines-activemodel (0.6.0)
       activemodel (>= 4.1, < 6.0)
