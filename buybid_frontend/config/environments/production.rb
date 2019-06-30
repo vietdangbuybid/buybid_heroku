@@ -66,4 +66,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  role :app, %w{VietDangBuybid@ec2-52-53-222-99.us-west-1.compute.amazonaws.com}
+  role :web, %w{VietDangBuybid@ec2-52-53-222-99.us-west-1.compute.amazonaws.com}
+  role :db, %w{VietDangBuybid@ec2-52-53-222-99.us-west-1.compute.amazonaws.com}
+  set :ssh_options, {
+   keys: %w(/VietDangBuybid),
+   forward_agent: false,
+   auth_methods: %w(publickey password)
+  }
 end

@@ -23,8 +23,8 @@ test:
 # Configure for heroku use
 production:
   <<: *default
-  adapter: postgresql
-  database: db/production.sqlite3
-  #username: <%= Rails.application.credentials.dig(:db, :user) %>
-  #password: <%= Rails.application.credentials.dig(:db, :pass) %>
-  #database: <%= Rails.application.credentials.dig(:db, :database) %>
+  username: vietdangbuybid
+  database: vietdangbuybid_database_production
+  password: <%= ENV['VIETDANGBUYBID_DATABASE_PASSWORD']%> 
+  host: <%=ENV['VIETDANGBUYBID_DATABASE_HOST']%> 
+  port: <%=ENV['VIETDANGBUYBID_DATABASE_PORT']%>

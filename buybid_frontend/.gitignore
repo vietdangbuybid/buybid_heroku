@@ -34,3 +34,5 @@
 Gemfile.lock
 /config/credentials.yml.enc
 .rake_tasks~
+# Ignore application configuration
+/config/application.yml

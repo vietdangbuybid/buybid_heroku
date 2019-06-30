@@ -36,10 +36,17 @@ Gem::Specification.new do |s|
   s.add_dependency 'elasticsearch-rails'
   s.add_dependency 'mysql2'
   s.add_dependency 'spree_extension', BuybidCommon::SPREE_EXTENSION
+  s.add_dependency 'unicorn'
   # Those gems are used for deploying this app to heroku
   #s.add_dependency 'sqlite3'
   s.add_dependency 'pg'
+  s.add_dependency 'figaro'
   s.add_dependency 'rails_12factor'
+  s.add_dependency 'capistrano'
+  s.add_dependency 'capistrano3-puma'
+  s.add_dependency 'capistrano-rails'
+  s.add_dependency 'capistrano-bundler'
+  s.add_dependency 'capistrano-rvm' 
 
   #s.add_development_dependency 'factory_bot', '~> 4.7'
   #s.add_development_dependency 'appraisal'
